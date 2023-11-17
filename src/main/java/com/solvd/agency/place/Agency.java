@@ -1,0 +1,228 @@
+package com.solvd.agency.place;
+
+
+import com.solvd.agency.exceptions.CustomerDataException;
+import com.solvd.agency.interfaces.Displayable;
+import com.solvd.agency.interfaces.Reviewable;
+import com.solvd.agency.other.Destination;
+import com.solvd.agency.other.Location;
+import com.solvd.agency.person.Agent;
+import com.solvd.agency.person.Customer;
+import com.solvd.agency.service.Review;
+import com.solvd.agency.service.Transport;
+import com.solvd.agency.service.Travel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.*;
+
+
+public class Agency implements Reviewable, Displayable {
+
+    private static final Logger logger = LogManager.getLogger(Agent.class.getName());
+
+    private String name;
+    private Location location;
+    private Deque<Review> reviews;
+    private List<Agent> agents;
+    private List<Travel> travels;
+
+
+    private List<Customer> customers;
+
+
+    public Agency(String name, Location location, List<Agent> agents) {
+        this.reviews = new ArrayDeque<>();
+        this.agents = new LinkedList<>(agents);
+        this.travels = new ArrayList<>();
+        this.name = name;
+        this.location = location;
+        this.agents = agents;
+        this.customers = new ArrayList<>();
+    }
+
+
+    public void printAverageRating() {
+        System.out.println("Average Rating: " + getAverageRating());
+    }
+
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Deque<Review> getReview() {
+        return reviews;
+    }
+
+
+    public List<Travel> getTravels() {
+        return travels;
+    }
+
+    public void setTravels(List<Travel> travels) {
+        this.travels = travels;
+    }
+
+    public void setReview(Deque<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<Agent> getAgents() {
+        return agents;
+    }
+
+    public void setAgents(List<Agent> agents) {
+        this.agents = agents;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Deque<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Deque<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+
+    @Override
+    public float getAverageRating() {
+        if (this.reviews.isEmpty()) return 0;
+
+        float sum = 0;
+        for (Review review : reviews) {
+            sum += review.getRating();
+        }
+        return sum / this.reviews.size();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Agency agency = (Agency) o;
+        return Objects.equals(name, agency.name) &&
+                Objects.equals(location, agency.location) &&
+                reviews.equals(((Agency) o).getReview()) &&
+                agents.equals(((Agency) o).getAgents()) &&
+                travels.equals(((Agency) o).getTravels());
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, location);
+        result = 31 * result + reviews.hashCode();
+        result = 31 * result + agents.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Agency{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
+    }
+
+    public boolean findTravelById(int travelId) {
+        for (Travel travel : travels) {
+            if (travel.getId() == travelId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Optional<Travel> getTravelById(int travelId) {
+        return travels.stream().filter(travel -> travel.getId() == travelId).findFirst();
+    }
+
+
+    public boolean isDestinationAvailable(Destination destination) {
+        for (Travel travel : travels) {
+            if (travel.getDestination().equals(destination)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public Map<String, String> customerPhoneBook() {
+        Map<String, String> phoneMap = new HashMap<>();
+
+        for (Travel travel : this.travels) {
+            for (Customer customer : travel.getTransport().getSeats()) {
+                if (customer != null) {
+                    String fullName = customer.getName() + " " + customer.getSurname();
+                    phoneMap.put(customer.getPhoneNumber(), fullName);
+                }
+            }
+        }
+
+        return phoneMap;
+    }
+
+    @Override
+    public void displayInfo() {
+        logger.info(customerPhoneBook().toString());
+    }
+
+    public void addTravel(Travel travel) {
+        this.travels.add(travel);
+    }
+
+    public void addCustomer(Customer customer) {
+        this.customers.add(customer);
+    }
+
+    public void addReview(Review newReview) {
+        this.reviews.add(newReview);
+    }
+
+    public void addAgent(Agent agent) {
+        this.agents.add(agent);
+    }
+
+    public Customer findCustomerByPhoneNumber(String phoneNumber) throws CustomerDataException {
+        try {
+            if (phoneNumber.length() != 9) {
+                throw new CustomerDataException("Incorrect phone number length.");
+            }
+        } catch (CustomerDataException e) {
+            logger.warn("Warning: " + e.getMessage());
+        }
+
+        return getCustomers().stream()
+                .filter(c -> c.getPhoneNumber().equals(phoneNumber))
+                .findFirst()
+                .orElseThrow(() -> new CustomerDataException("Customer not found with phone number: " + phoneNumber));
+    }
+
+
+
+}
+
