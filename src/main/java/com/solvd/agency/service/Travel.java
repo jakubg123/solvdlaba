@@ -14,10 +14,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Travel implements Discountable, Displayable {
-
+    private static final Scanner scanner = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger(Travel.class);
 
 

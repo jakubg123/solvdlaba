@@ -19,7 +19,8 @@ public class Hotel implements Reservable, Reviewable {
 
     public Hotel(String name, Map<Integer, Boolean> rooms) {
         this.name = name;
-        this.roomReservationStatus = new HashMap<>();
+        this.roomReservationStatus = rooms != null ? new HashMap<>(rooms) : new HashMap<>();
+        this.reviews = new HashSet<>();
 
     }
 

@@ -23,9 +23,10 @@ import java.util.Scanner;
 import static com.solvd.agency.utils.Utils.*;
 
 public class CreationUtils {
+    private static final Scanner scanner = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger(CreationUtils.class);
 
-    public static void createCustomer(String name, String surname, String phoneNumber, Agency agency, Map<Integer, Insurance> insuranceMap) throws CustomerDataException {
+    public static void createCustomer(String name, String surname, String phoneNumber, Agency agency) throws CustomerDataException {
         try {
             validateData(name);
             validateData(surname);
@@ -35,11 +36,13 @@ public class CreationUtils {
             e.getMessage();
         }
             Customer customer = new Customer(name, surname, phoneNumber);
+            logger.info("Customer created");
             agency.addCustomer(customer);
 
     }
 
     public static void createAgent(String name, String surname, Agency agency) throws CustomerDataException {
+        logger.info("Creating a new agent...");
         try{
         validateData(name);
         validateData(surname);
@@ -48,118 +51,140 @@ public class CreationUtils {
             e.getMessage();
         }
         Agent agent = new Agent(agency.getAgents().size() + 1, name, surname);
+        logger.info("Agent created");
         agency.addAgent(agent);
     }
 
-    public static Location createLocation(Scanner scanner) {
-        logger.info("Enter destination country:");
-        String destinationCountry = scanner.nextLine();
-        scanner.nextLine(); // \n consume
-        logger.info("Enter destination city:");
-        String destinationCity = scanner.nextLine();
-        logger.info("Enter destination street:");
-        String destinationStreet = scanner.nextLine();
+//    public static Location createLocation() {
+//        logger.info("Enter destination country:");
+//        String destinationCountry = scanner.nextLine();
+//        logger.info("Enter destination city:");
+//        String destinationCity = scanner.nextLine();
+//        logger.info("Enter destination street:");
+//        String destinationStreet = scanner.nextLine();
+//
+//        return new Location(destinationCountry, destinationCity, destinationStreet);
+//    }
+//
+//    public static Hotel createHotel() {
+//        System.out.print("Enter Hotel name: ");
+//        String name = scanner.nextLine();
+//
+//        Map<Integer, Boolean> roomReservationStatus = new HashMap<>();
+//        System.out.println("Enter the number of rooms in the hotel:");
+//        int numberOfRooms = Integer.parseInt(scanner.nextLine());
+//        for (int i = 1; i <= numberOfRooms; i++) {
+//            roomReservationStatus.put(i, false);
+//        }
+//
+//        return new Hotel(name, roomReservationStatus);
+//    }
+//    public static Destination createDestination() {
+//        Location location = createLocation();
+//        Hotel hotel = createHotel();
+//        return new Destination(location, hotel);
+//    }
 
-        return new Location(destinationCountry, destinationCity, destinationStreet);
 
-    }
+//    public static Transport createTransport() {
+//        logger.info("Enter transport name");
+//        String name = scanner.nextLine();
+//        logger.info("Enter available seats");
+//        int seats = Integer.parseInt(scanner.nextLine());
+//
+//        return new Transport(name, seats);
+//    }
 
-    public static Hotel createHotel(Scanner scanner) {
-        System.out.print("Enter Hotel name: ");
-        String name = scanner.nextLine();
-
-        Map<Integer, Boolean> roomReservationStatus = new HashMap<>();
-        System.out.println("Enter the number of rooms in the hotel:");
-        int numberOfRooms = scanner.nextInt();
-        for (int i = 1; i <= numberOfRooms; i++) {
-            roomReservationStatus.put(i, false);
-        }
-
-        return new Hotel(name, roomReservationStatus);
-    }
-    public static Destination createDestination(Scanner scanner) {
-        Location location = createLocation(scanner);
-        Hotel hotel = createHotel(scanner);
-        return new Destination(location, hotel);
-    }
-
-    // too much initialization in the console app, I decided to predefine these in a map
-
-    public static Transport createTransport(Scanner scanner) {
-        System.out.println("Enter transport name");
-        String name = scanner.nextLine();
-        System.out.println("Enter available seats");
-        int seats = scanner.nextInt();
-
-        return new Transport(name, seats);
-    }
-
-    public static void createTravel(Scanner scanner, Agency agency) throws TravelExistsException, CustomerDataException {
-        logger.info("Starting travel creation process");
-
+    private static int generateUniqueTravelId(Agency agency) {
         int id;
-        boolean isCreated = true;
-        while (isCreated) {
+        while (true) {
             id = Math.abs(new Random().nextInt());
             logger.debug("Generated travel ID: {}", id);
-
-            try {
-                if (agency.findTravelById(id)) {
-                    throw new TravelExistsException("Travel exists with ID: " + id);
-                } else {
-                    Map<Integer, Destination> destinationMap = createDestinationMap();
-                    logger.debug("Destination map created");
-
-                    System.out.println("Choose your destination:\n");
-                    displayMap(destinationMap);
-                    int key = scanner.nextInt();
-                    if (!destinationMap.containsKey(key)) {
-                        logger.warn("Invalid destination key selected: {}", key);
-                        continue;
-                    }
-
-                    Destination destination = destinationMap.get(key);
-                    logger.info("Destination selected: {}", destination);
-
-                    Map<Integer, Transport> transportMap = createTransportMap();
-                    logger.debug("Transport map created");
-
-                    System.out.println("Choose your transport:\n");
-                    displayMap(transportMap);
-                    key = scanner.nextInt();
-                    if (!transportMap.containsKey(key)) {
-                        logger.warn("Invalid transport key selected: {}", key);
-                        continue;
-                    }
-
-                    Transport transport = transportMap.get(key);
-                    logger.info("Transport selected: {}", transport);
-
-                    System.out.println("Enter +days to the travel date");
-                    int days = scanner.nextInt();
-                    LocalDate travelDate = LocalDate.now().plusDays(days);
-                    logger.debug("Travel date set to: {}", travelDate);
-
-                    System.out.println("Set the price");
-                    double price = scanner.nextDouble();
-                    logger.debug("Price set to: {}", price);
-
-                    Travel travel = new Travel(id, transport, destination, travelDate, price);
-                    agency.addTravel(travel);
-                    logger.info("Travel created successfully: {}", travel);
-                    isCreated = false;
-                }
-
-            } catch (TravelExistsException e) {
-                logger.error("Travel creation failed due to existing travel ID: {}", id, e);
-                System.out.println(e.getMessage());
+            if (!agency.findTravelById(id)) {
+                return id;
             }
+            logger.debug("Travel ID already exists, generating a new one.");
+        }
+    }
+    private static Destination selectDestination() {
+        Map<Integer, Destination> destinationMap = createDestinationMap();
+        logger.debug("Destination map created");
+
+        while (true) {
+            System.out.println("Choose your destination:\n");
+            displayMap(destinationMap);
+            int key = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+            if (destinationMap.containsKey(key)) {
+                Destination destination = destinationMap.get(key);
+                logger.info("Destination selected: {}", destination);
+                return destination;
+            }
+            logger.warn("Invalid destination key selected: {}", key);
+        }
+    }
+    private static Transport selectTransport() {
+        Map<Integer, Transport> transportMap = createTransportMap();
+        logger.debug("Transport map created");
+
+        while (true) {
+            System.out.println("Choose your transport:\n");
+            displayMap(transportMap);
+            int key = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+            if (transportMap.containsKey(key)) {
+                Transport transport = transportMap.get(key);
+                logger.info("Transport selected: {}", transport);
+                return transport;
+            }
+            logger.warn("Invalid transport key selected: {}", key);
+        }
+    }
+    private static LocalDate setTravelDate() {
+        System.out.println("Enter +days to the travel date");
+        int days = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        LocalDate travelDate = LocalDate.now().plusDays(days);
+        logger.debug("Travel date set to: {}", travelDate);
+        return travelDate;
+    }
+
+    private static double setTravelPrice() {
+        System.out.println("Set the price");
+        double price = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline character
+        logger.debug("Price set to: {}", price);
+        return price;
+    }
+    public static void createAndAddTravel(Agency agency) {
+        try {
+            int id = generateUniqueTravelId(agency);
+            Destination destination = selectDestination();
+            Transport transport = selectTransport();
+            LocalDate travelDate = setTravelDate();
+            double price = setTravelPrice();
+
+            Travel travel = new Travel(id, transport, destination, travelDate, price);
+            agency.addTravel(travel);
+            logger.info("Travel created successfully: {}", travel);
+        } catch (CustomerDataException e) {
+            logger.error(e.getMessage());
         }
     }
 
     public static Map<Integer, Destination> createDestinationMap() {
-        Hotel hotel1 = new Hotel("Hotel A", createLocation(s));
-        Hotel hotel2 = new Hotel("Hotel B");
+        Map<Integer, Boolean> roomReservationStatus1 = new HashMap<>();
+        for (int i = 1; i <= 10; i++) {
+            roomReservationStatus1.put(i, false);
+        }
+
+        Map<Integer, Boolean> roomReservationStatus2 = new HashMap<>();
+        for (int i = 1; i <= 15; i++) {
+            roomReservationStatus2.put(i, false);
+        }
+
+        Hotel hotel1 = new Hotel("Hotel A", roomReservationStatus1);
+        Hotel hotel2 = new Hotel("Hotel B", roomReservationStatus2);
 
         Location location1 = new Location("testStreet", "testCity", "testCountry");
         Location location2 = new Location("Street", "City", "Country");
@@ -168,14 +193,11 @@ public class CreationUtils {
         Destination destination2 = new Destination(location2, hotel2);
 
         Map<Integer, Destination> map = new HashMap<>();
-
         map.put(1, destination1);
         map.put(2, destination2);
 
         return map;
     }
-
-
     public static Map<Integer, Transport> createTransportMap() {
         Transport transport1 = new Transport("Transport A", 50);
         Transport transport2 = new Transport("Transport B", 100);

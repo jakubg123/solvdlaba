@@ -1,0 +1,543 @@
+13:16:57.295 [main] INFO  com.solvd.agency.Main - Start
+13:17:02.152 [main] INFO  com.solvd.agency.Main - Enter name: 
+13:17:04.919 [main] INFO  com.solvd.agency.Main - Enter surname: 
+13:17:10.055 [main] INFO  com.solvd.agency.Main - Enter phone number: 
+13:17:12.544 [main] INFO  com.solvd.agency.Main - Customer created
+13:17:23.454 [main] INFO  com.solvd.agency.person.Customer - jakub gniadek 111222333 0.0
+14:05:24.755 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+15:52:38.348 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 1.Display agents
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 3. Display customers
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:52:38.350 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:53:14.534 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 1.Display agents
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 3. Display customers
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:53:14.535 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:53:14.536 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:53:19.326 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 1.Display agents
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 3. Display customers
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:53:19.327 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:53:19.328 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:53:19.328 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:25.347 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+15:54:25.349 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:25.349 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:25.349 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:25.349 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:25.350 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:27.445 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:27.445 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:27.445 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:27.445 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:27.445 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:27.446 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:28.153 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:28.153 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:28.153 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:28.153 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:28.154 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:29.369 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:29.369 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:29.370 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:29.371 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:29.371 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:34.641 [main] INFO  com.solvd.agency.Main - Enter name: 
+15:54:36.817 [main] INFO  com.solvd.agency.Main - Enter surname: 
+15:54:38.024 [main] INFO  com.solvd.agency.Main - Enter phone number: 
+15:54:40.961 [main] INFO  com.solvd.agency.utils.CreationUtils - Customer created
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:40.961 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:40.962 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:43.120 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:43.121 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:43.122 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:43.122 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:43.122 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:43.122 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:44.405 [main] INFO  com.solvd.agency.person.Customer - jakub gniadek 111222333 0.0
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:44.406 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:44.407 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:44.407 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:54:53.116 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+15:54:56.806 [main] INFO  com.solvd.agency.Main - Enter balance to add
+15:54:59.508 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:54:59.509 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:54:59.510 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:54:59.510 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:55:22.864 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+15:55:27.832 [main] INFO  com.solvd.agency.person.Customer - Would you like to purchase insurance? (Type 'Yes' to proceed)
+15:55:31.593 [main] INFO  com.solvd.agency.person.Customer - Enter the insurance ID you want to purchase:
+15:55:34.271 [main] INFO  com.solvd.agency.person.Customer - Insurance purchased.
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:55:34.272 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:55:34.273 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:55:34.273 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+15:55:43.041 [main] INFO  com.solvd.agency.person.Customer - jakub gniadek 111222333 1900.0 INS001
+15:55:43.041 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+15:55:43.041 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+15:55:43.041 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+15:55:43.042 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:36:04.810 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:36:04.812 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:36:04.813 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:36:21.105 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination country:
+16:36:30.008 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination city:
+16:36:32.432 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination street:
+16:36:48.451 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination country:
+16:36:49.772 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination city:
+16:36:50.420 [main] INFO  com.solvd.agency.utils.CreationUtils - Enter destination street:
+16:48:15.434 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:48:15.437 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:48:15.438 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:48:15.438 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:48:15.438 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:49:17.522 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:49:17.524 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:49:17.524 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:49:17.524 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:49:17.524 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:49:17.525 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:49:22.233 [main] INFO  com.solvd.agency.Main - Enter name: 
+16:49:27.490 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:49:27.492 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:49:27.492 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:49:27.493 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:51:34.515 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:51:34.517 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:51:34.517 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:51:34.518 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:52:30.901 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:52:30.903 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:52:30.904 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:52:57.441 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:52:57.443 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:52:57.443 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:52:57.443 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:52:57.444 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:53:03.046 [main] INFO  com.solvd.agency.utils.CreationUtils - Destination selected: Name: Hotel A, No reviews available,  testCountry testCity testStreet
+16:53:03.844 [main] INFO  com.solvd.agency.utils.CreationUtils - Transport selected: Transport Transport B, availableSeats 100, Taken Seats=[]
+16:53:07.627 [main] INFO  com.solvd.agency.utils.CreationUtils - Travel created successfully: Travel{ id: 1401363238, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2024-01-06, price=2000.0, customersCustomers: }
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:53:07.628 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:53:07.629 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:53:07.629 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:53:07.629 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:53:07.629 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:53:16.572 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1401363238, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2024-01-06, price=2000.0, customersCustomers: }
+16:53:16.572 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:53:16.572 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:53:16.572 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:53:16.572 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:53:16.573 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:53:16.574 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:53:28.776 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1401363238, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2024-01-06, price=2000.0, customersCustomers: }
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:53:28.777 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:53:28.778 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:53:28.778 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:53:28.778 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:53:28.778 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:53:28.778 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:53:32.823 [main] INFO  com.solvd.agency.Main - Enter name: 
+16:53:34.367 [main] INFO  com.solvd.agency.Main - Enter surname: 
+16:53:35.351 [main] INFO  com.solvd.agency.Main - Enter phone number: 
+16:53:38.679 [main] INFO  com.solvd.agency.utils.CreationUtils - Customer created
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:53:38.680 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:53:45.651 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:53:48.468 [main] INFO  com.solvd.agency.utils.Utils - Booking transport for customer: jakub
+16:53:48.468 [main] INFO  com.solvd.agency.utils.Utils - Pass travel id
+16:53:58.140 [main] INFO  com.solvd.agency.utils.Utils - Last minute discount!
+16:53:58.141 [main] INFO  com.solvd.agency.utils.Utils - Insufficient balance to book the flight.
+16:53:58.141 [main] INFO  com.solvd.agency.person.Agent - {}
+16:53:58.141 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:53:58.141 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:53:58.141 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:53:58.142 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:54:08.502 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1401363238, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2024-01-06, price=2000.0, customersCustomers: }
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:54:08.503 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:54:54.569 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1401363238, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2024-01-06, price=2000.0, customersCustomers: }
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:54:54.570 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:54:54.571 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:54:54.571 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:54:54.571 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:54:54.571 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:54:57.961 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:55:05.445 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:55:05.447 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:55:05.448 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:55:05.448 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:55:05.448 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:55:11.485 [main] INFO  com.solvd.agency.Main - Enter name: 
+16:55:13.388 [main] INFO  com.solvd.agency.Main - Enter surname: 
+16:55:14.381 [main] INFO  com.solvd.agency.Main - Enter phone number: 
+16:55:16.950 [main] INFO  com.solvd.agency.utils.CreationUtils - Customer created
+16:55:16.950 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:55:16.951 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:55:16.952 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:55:16.952 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:55:16.952 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:55:27.862 [main] INFO  com.solvd.agency.utils.CreationUtils - Destination selected: Name: Hotel A, No reviews available,  testCountry testCity testStreet
+16:55:28.984 [main] INFO  com.solvd.agency.utils.CreationUtils - Transport selected: Transport Transport B, availableSeats 100, Taken Seats=[]
+16:55:33.779 [main] INFO  com.solvd.agency.utils.CreationUtils - Travel created successfully: Travel{ id: 1366398885, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2023-11-27, price=1000.0, customersCustomers: }
+16:55:33.779 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:55:33.780 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:55:33.781 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:55:33.781 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:55:33.781 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:55:33.781 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:55:33.781 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:55:35.873 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1366398885, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2023-11-27, price=1000.0, customersCustomers: }
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:55:35.873 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:55:35.874 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:55:41.984 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:55:45.297 [main] INFO  com.solvd.agency.utils.Utils - Booking transport for customer: jakub
+16:55:45.298 [main] INFO  com.solvd.agency.utils.Utils - Pass travel id
+16:55:54.746 [main] INFO  com.solvd.agency.utils.Utils - Last minute discount!
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - Insufficient balance to book the flight.
+16:55:54.747 [main] INFO  com.solvd.agency.person.Agent - {}
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:55:54.747 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:55:54.748 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:57:27.078 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:57:27.079 [main] WARN  com.solvd.agency.person.Agent - Warning: Incorrect phone number length.
+16:57:33.502 [main] INFO  com.solvd.agency.Main - Welcome to the Travel Agency
+16:57:33.504 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:57:33.505 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:57:38.301 [main] INFO  com.solvd.agency.Main - Enter name: 
+16:57:39.825 [main] INFO  com.solvd.agency.Main - Enter surname: 
+16:57:40.585 [main] INFO  com.solvd.agency.Main - Enter phone number: 
+16:57:42.970 [main] INFO  com.solvd.agency.utils.CreationUtils - Customer created
+16:57:42.970 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:57:42.971 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:57:45.793 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:57:48.738 [main] INFO  com.solvd.agency.Main - Enter balance to add
+16:57:50.674 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:57:50.674 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:57:50.674 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:57:50.674 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:57:50.675 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:58:00.474 [main] INFO  com.solvd.agency.utils.CreationUtils - Destination selected: Name: Hotel A, No reviews available,  testCountry testCity testStreet
+16:58:01.137 [main] INFO  com.solvd.agency.utils.CreationUtils - Transport selected: Transport Transport B, availableSeats 100, Taken Seats=[]
+16:58:07.837 [main] INFO  com.solvd.agency.utils.CreationUtils - Travel created successfully: Travel{ id: 1955357494, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 100, Taken Seats=[], localDate=2023-12-07, price=50.0, customersCustomers: }
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:58:07.837 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:58:07.838 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:58:07.838 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:58:07.838 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:58:07.838 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:58:15.157 [main] INFO  com.solvd.agency.utils.Utils - Enter the phone number:
+16:58:18.029 [main] INFO  com.solvd.agency.utils.Utils - Booking transport for customer: asdasd
+16:58:18.030 [main] INFO  com.solvd.agency.utils.Utils - Pass travel id
+16:58:48.666 [main] INFO  com.solvd.agency.utils.Utils - Last minute discount!
+16:58:48.667 [main] INFO  com.solvd.agency.utils.Utils - Transport booked successfully!
+16:58:48.667 [main] INFO  com.solvd.agency.person.Agent - {111222333=asdasd dsadas}
+16:58:48.667 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:58:48.668 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:58:48.669 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:58:48.669 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:58:48.669 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 
+16:58:55.634 [main] INFO  com.solvd.agency.service.Travel - Travel{ id: 1955357494, destination=Name: Hotel A, No reviews available,  testCountry testCity testStreet, transport=Transport Transport B, availableSeats 99, Taken Seats=[asdasd dsadas 111222333 950.0, ], localDate=2023-12-07, price=50.0, customersCustomers: asdasd dsadas 111222333 950.0}
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - Please choose an option:
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 1. Display agents
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 2. Display customers
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 3. Display agency travels
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 4. Register Customer
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 5. Register Agent
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 6. Customer add balance
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 7. Customer get insurance
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 8. Book travel for customer
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 9. Add travel to agencys offer
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - 10. Exit
+16:58:55.634 [main] INFO  com.solvd.agency.utils.Utils - Enter choice: 

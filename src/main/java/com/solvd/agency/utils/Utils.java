@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 public class Utils {
     public static final Logger logger = LogManager.getLogger(Utils.class.getName());
-
+    private static final Scanner scanner = new Scanner(System.in);
 
     public void printPersonDetails(Person person) {
         System.out.println("Person Details: " + person.toString());
@@ -39,50 +39,6 @@ public class Utils {
     }
 
 
-    public static void bookTravelForCustomer(String phoneNumber, Agency agency) {
-
-        if (agency.getCustomers().isEmpty()) {
-            System.out.println("\nThere are no customers!\n");
-            return;
-        } else {
-            System.out.print("Enter customer phone number: ");
-            try {
-                if (phoneNumber.length() != 9) {
-                    throw new CustomerDataException("Incorrect phone number length.");
-                }
-
-                Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
-
-                System.out.println("Booking transport for customer: " + customer.getName());
-                System.out.println("Pass travel id");
-                Optional<Travel> travelOptional = agency.getTravelById(scanner.nextInt());
-                if (travelOptional.isPresent()) {
-                    Travel travel = travelOptional.get();
-
-                    if (travel.isSeatAvailable()) {
-                        Period diff = Period.between(travel.getLocalDate(), LocalDate.now());
-                        int diffDays = diff.getDays();
-                        if (diffDays <= 3) {
-                            System.out.println("Last minute discount!");
-                            travel.applyDiscount(50);
-
-                        }
-                        if (customer.getBalance() < travel.getPrice())
-                            throw new CustomerDataException("Get more balance bro, you can't book that flight");
-                        travel.bookSeat(customer);
-                        System.out.println("Transport booked successfully!");
-                    }
-                } else {
-                    System.out.println("No seats available on the transport!");
-                }
-
-            } catch (CustomerDataException | PaymentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-
-    }
 
     public static void display(@NotNull List<? extends Displayable> displayables) {
         if (displayables.isEmpty()) {
@@ -95,19 +51,18 @@ public class Utils {
     }
 
     public static void printMenu() {
-        System.out.println("Please choose an option:");
-        System.out.println("1. Create Travel");
-        System.out.println("2. Display all travels");
-        System.out.println("3. Create Customer");
-        System.out.println("4. Add balance");
-        System.out.println("5. Get insurance");
-        System.out.println("6. Create Agent");
-        System.out.println("7. Book Transport for Customer");
-        System.out.println("8. Print All Agents");
-        System.out.println("9. Print All Customers");
-        System.out.println("10. Exit");
-
-        System.out.print("Enter choice: ");
+        logger.info("Please choose an option:");
+        logger.info("1. Display agents");
+        logger.info("2. Display customers");
+        logger.info("3. Display agency travels");
+        logger.info("4. Register Customer");
+        logger.info("5. Register Agent");
+        logger.info("6. Customer add balance");
+        logger.info("7. Customer get insurance");
+        logger.info("8. Book travel for customer");
+        logger.info("9. Add travel to agencys offer");
+        logger.info("10. Exit");
+        logger.info("Enter choice: ");
     }
 
     public static void displayAllTravels(Agency agency) {
@@ -144,9 +99,66 @@ public class Utils {
     }
 
 
-    public static void readPhoneNumber(Scanner scanner) {
-        System.out.println("Enter the phone number:");
-        scanner.next();
+    public static String readPhoneNumber() {
+        logger.info("Enter the phone number:");
+        return scanner.nextLine();
+    }
+
+
+    public static void bookTravelForCustomer(String phoneNumber, Agency agency) throws CustomerDataException {
+        if (agency.getCustomers().isEmpty()) {
+            logger.info("\nThere are no customers!\n");
+            return;
+        }
+        validatePhoneNUmber(phoneNumber);
+        try {
+            Customer customer = findCustomer(agency, phoneNumber);
+            logger.info("Pass travel id");
+            int id = scanner.nextInt();
+            Travel travel = selectTravel(id, agency);
+            bookTravelFor(customer, travel);
+        } catch (CustomerDataException | PaymentException e) {
+            logger.info(e.getMessage());
+        }
+    }
+
+    private static Customer findCustomer(Agency agency, String phoneNumber) throws CustomerDataException {
+        Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
+        logger.info("Booking transport for customer: " + customer.getName());
+        return customer;
+    }
+
+    private static Travel selectTravel(int id, Agency agency) throws CustomerDataException {
+
+        Optional<Travel> travelOptional = agency.getTravelById(id);
+        if (travelOptional.isEmpty()) {
+            throw new CustomerDataException("Invalid travel ID.");
+        }
+        return travelOptional.get();
+    }
+
+    private static void bookTravelFor(Customer customer, Travel travel) throws CustomerDataException, PaymentException {
+        if (!travel.isSeatAvailable()) {
+            throw new CustomerDataException("No seats available on the transport!");
+        }
+
+        applyDiscountIfNeeded(travel);
+
+        if (customer.getBalance() < travel.getPrice()) {
+            throw new CustomerDataException("Insufficient balance to book the flight.");
+        }
+
+        travel.bookSeat(customer);
+        logger.info("Transport booked successfully!");
+    }
+
+    private static void applyDiscountIfNeeded(Travel travel) throws PaymentException {
+        Period diff = Period.between(travel.getLocalDate(), LocalDate.now());
+        int diffDays = diff.getDays();
+        if (diffDays <= 3) {
+            logger.info("Last minute discount!");
+            travel.applyDiscount(50);
+        }
     }
 
 

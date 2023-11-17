@@ -36,71 +36,70 @@ public class Main {
         Agency agency = new Agency("MyAgency", location, agents);
 
         boolean exit = false;
-        System.out.println("Welcome to the Travel Agency");
-        logger.info("Start");
+        logger.info("Welcome to the Travel Agency");
+
         while (!exit) {
             printMenu();
-
             int choice = scanner.nextInt();
+
             String name, surname;
             String phoneNumber;
             Customer customer;
+
             switch (choice) {
                 case 1:
-                    createTravel(scanner, agency);
-                    System.out.println("\n0. Display agency related travels\n<Other>. Exit\n"); // will be edited
-                    int displayAgency = scanner.nextInt();
-                    if (displayAgency == 0) {
-                        for (Travel travel : agency.getTravels()) {
-                            travel.displayInfo();
-                        }
-                    }
+                    display(agency.getAgents());
                     break;
                 case 2:
-                    displayAllTravels(agency);
+                    display(agency.getCustomers());
                     break;
                 case 3:
+                    displayAllTravels(agency);
+                    break;
+
+                case 4:
                     logger.info("Enter name: ");
                     name = scanner.next();
                     logger.info("Enter surname: ");
                     surname = scanner.next();
                     logger.info("Enter phone number: ");
                     phoneNumber = scanner.next();
-                    createCustomer(name, surname, phoneNumber, agency, insuranceMap);
-                    logger.info("Customer created");
+                    createCustomer(name, surname, phoneNumber, agency);
                     break;
-                case 4:
-                    customer = getCustomerByPhoneNumber(agency, scanner);
-                    customer.addBalance(scanner);
-                    break;
+
                 case 5:
-                    customer = getCustomerByPhoneNumber(agency, scanner);
-                    customer.insuranceReminder(insuranceMap, scanner);
-                    break;
-                case 6:
-                    logger.info("Creating a new agent...");
+
                     logger.info("Enter name: ");
                     name = scanner.next();
                     logger.info("Enter surname: ");
                     surname = scanner.next();
                     createAgent(name, surname, agency);
-                    logger.info("Agent created");
+                    break;
+
+                case 6:
+                    customer = getCustomerByPhoneNumber(agency);
+                    logger.info("Enter balance to add");
+                    double balance = scanner.nextDouble();
+                    customer.addBalance(balance);
                     break;
                 case 7:
-                    bookTravelForCustomer(scanner, agency); //tu
+                    customer = getCustomerByPhoneNumber(agency);
+                    customer.insuranceReminder(insuranceMap);
+                    break;
+
+                case 8:
+                    phoneNumber = readPhoneNumber();
+                    bookTravelForCustomer(phoneNumber, agency);
                     agency.displayInfo();
                     break;
-                case 8:
-                    display(agency.getAgents());
-                    break;
                 case 9:
-                    display(agency.getCustomers());
+                    createAndAddTravel(agency);
                     break;
                 case 10:
                     exit = true;
                     break;
                 default:
-                    logger.info("Enter a number between 1 and 12.");
+                    logger.info("Enter a number between 1 and 10.");
                     logger.warn("Invalid input: {}", choice);
             }
 

@@ -18,6 +18,7 @@ import static com.solvd.agency.utils.Utils.displayMap;
 import static com.solvd.agency.utils.Utils.readPhoneNumber;
 
 public class Customer extends Person {
+    private static final Scanner scanner = new Scanner(System.in);
 
     private static final Logger logger = LogManager.getLogger(Customer.class.getName());
     private String phoneNumber;
@@ -123,7 +124,7 @@ public class Customer extends Person {
         }
     }
 
-    public void purchaseInsurance(Map<Integer, Insurance> insuranceMap, Scanner scanner) throws CustomerDataException {
+    public void purchaseInsurance(Map<Integer, Insurance> insuranceMap) throws CustomerDataException {
         try {
             displayMap(insuranceMap);
             logger.info("Enter the insurance ID you want to purchase:");
@@ -147,13 +148,13 @@ public class Customer extends Person {
     }
 
 
-    public void insuranceReminder(Map<Integer, Insurance> insuranceMap, Scanner scanner) throws CustomerDataException {
+    public void insuranceReminder(Map<Integer, Insurance> insuranceMap) throws CustomerDataException {
         if (insurance == null || !insurance.isPolicyActive()) {
             logger.info("Would you like to purchase insurance? (Type 'Yes' to proceed)");
             String choice = scanner.next();
 
             if ("Yes".equalsIgnoreCase(choice)) {
-                purchaseInsurance(insuranceMap, scanner);
+                purchaseInsurance(insuranceMap);
             }else {
                 logger.info("Back to lobby");
             }
@@ -165,15 +166,13 @@ public class Customer extends Person {
         this.balance -= price;
     }
 
-    public void addBalance(Scanner scanner) {
-        logger.info("Pass balance to add");
-        this.balance += scanner.nextDouble();
+    public void addBalance(double balance) {
+        this.balance = this.balance + balance;
     }
 
 
-    public static Customer getCustomerByPhoneNumber(Agency agency, Scanner scanner) throws CustomerDataException {
-        readPhoneNumber(scanner);
-        String phoneNumber = scanner.nextLine();
+    public static Customer getCustomerByPhoneNumber(Agency agency) throws CustomerDataException {
+        String phoneNumber = readPhoneNumber();
         return agency.findCustomerByPhoneNumber(phoneNumber);
     }
 

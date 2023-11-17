@@ -8,10 +8,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Transport implements Displayable {
     private static final Logger logger = LogManager.getLogger(Transport.class);
-
+    private static final Scanner scanner = new Scanner(System.in);
     private String name;
     private List<Customer> seats;
     private int availableSeats;

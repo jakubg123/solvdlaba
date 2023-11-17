@@ -4,9 +4,10 @@ import com.solvd.agency.interfaces.Displayable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Scanner;
+
 public class Review implements Displayable {
     private static final Logger logger = LogManager.getLogger(Review.class);
-
     private String name;
     private String reviewBody;
     private int rating;
