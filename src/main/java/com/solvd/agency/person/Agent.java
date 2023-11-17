@@ -46,18 +46,6 @@ public class Agent extends Person {
     }
 
 
-    @Override
-    public void getOnTransport(Transport transport, Location location, double price) {
-        this.setBalance(getBalance() - price);
-        System.out.println("My class is: " + getClass() + " I paid " + price + " for this transport");
-    }
-
-    @Override
-    public void getOffTransport(Transport transport) {
-
-        System.out.println("Agent out of " + transport.toString());
-
-    }
 
     @Override
     public void displayInfo() {

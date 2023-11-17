@@ -39,68 +39,60 @@ public class Main {
         logger.info("Welcome to the Travel Agency");
 
         while (!exit) {
+
             printMenu();
-            int choice = scanner.nextInt();
+            try {
 
-            String name, surname;
-            String phoneNumber;
-            Customer customer;
+                int choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    display(agency.getAgents());
-                    break;
-                case 2:
-                    display(agency.getCustomers());
-                    break;
-                case 3:
-                    displayAllTravels(agency);
-                    break;
+                String name, surname;
+                String phoneNumber;
+                Customer customer;
 
-                case 4:
-                    logger.info("Enter name: ");
-                    name = scanner.next();
-                    logger.info("Enter surname: ");
-                    surname = scanner.next();
-                    logger.info("Enter phone number: ");
-                    phoneNumber = scanner.next();
-                    createCustomer(name, surname, phoneNumber, agency);
-                    break;
+                switch (choice) {
+                    case 1:
+                        display(agency.getAgents());
+                        break;
+                    case 2:
+                        display(agency.getCustomers());
+                        break;
+                    case 3:
+                        displayAllTravels(agency);
+                        break;
+                    case 4:
+                        createCustomer(agency);
+                        break;
 
-                case 5:
+                    case 5:
+                        createAgent(agency);
+                        break;
+                    case 6:
+                        customer = getCustomerByPhoneNumber(agency);
+                        customer.addBalance();
+                        break;
+                    case 7:
+                        customer = getCustomerByPhoneNumber(agency);
+                        customer.insuranceReminder(insuranceMap);
+                        break;
 
-                    logger.info("Enter name: ");
-                    name = scanner.next();
-                    logger.info("Enter surname: ");
-                    surname = scanner.next();
-                    createAgent(name, surname, agency);
-                    break;
-
-                case 6:
-                    customer = getCustomerByPhoneNumber(agency);
-                    logger.info("Enter balance to add");
-                    double balance = scanner.nextDouble();
-                    customer.addBalance(balance);
-                    break;
-                case 7:
-                    customer = getCustomerByPhoneNumber(agency);
-                    customer.insuranceReminder(insuranceMap);
-                    break;
-
-                case 8:
-                    phoneNumber = readPhoneNumber();
-                    bookTravelForCustomer(phoneNumber, agency);
-                    agency.displayInfo();
-                    break;
-                case 9:
-                    createAndAddTravel(agency);
-                    break;
-                case 10:
-                    exit = true;
-                    break;
-                default:
-                    logger.info("Enter a number between 1 and 10.");
-                    logger.warn("Invalid input: {}", choice);
+                    case 8:
+                        phoneNumber = readPhoneNumber();
+                        bookTravelForCustomer(phoneNumber, agency);
+                        agency.displayInfo();
+                        break;
+                    case 9:
+                        createAndAddTravel(agency);
+                        break;
+                    case 10:
+                        exit = true;
+                        break;
+                    default:
+                        logger.info("Enter a number between 1 and 10.");
+                        logger.warn("Invalid input: {}", choice);
+                }
+            } catch (java.util.InputMismatchException e) {
+                logger.error("Use numbers to move around the console app");
+                scanner.nextLine();
             }
 
         }

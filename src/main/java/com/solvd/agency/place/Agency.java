@@ -16,6 +16,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+import static com.solvd.agency.utils.Utils.readPhoneNumber;
+import static com.solvd.agency.utils.Utils.validatePhoneNUmber;
+
 
 public class Agency implements Reviewable, Displayable {
 
@@ -208,14 +211,13 @@ public class Agency implements Reviewable, Displayable {
     }
 
     public Customer findCustomerByPhoneNumber(String phoneNumber) throws CustomerDataException {
-        try {
-            if (phoneNumber.length() != 9) {
-                throw new CustomerDataException("Incorrect phone number length.");
-            }
-        } catch (CustomerDataException e) {
-            logger.warn("Warning: " + e.getMessage());
+        try
+        {
+            validatePhoneNUmber(phoneNumber);
         }
-
+        catch(CustomerDataException e){
+            logger.warn(e.getMessage());
+        }
         return getCustomers().stream()
                 .filter(c -> c.getPhoneNumber().equals(phoneNumber))
                 .findFirst()

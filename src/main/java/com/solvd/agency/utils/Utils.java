@@ -14,12 +14,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Utils {
     public static final Logger logger = LogManager.getLogger(Utils.class.getName());
@@ -37,8 +35,6 @@ public class Utils {
     public static String capitalizeFirstLetter(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
-
-
 
     public static void display(@NotNull List<? extends Displayable> displayables) {
         if (displayables.isEmpty()) {
@@ -92,16 +88,30 @@ public class Utils {
     }
 
     public static boolean validatePhoneNUmber(String data) throws CustomerDataException {
-        if (data.length() != 9) {
+        if (data.length() != 9 || !data.matches("\\d{9}")) {
             throw new CustomerDataException("Wrong number");
         }
         return true;
     }
 
 
+
     public static String readPhoneNumber() {
-        logger.info("Enter the phone number:");
-        return scanner.nextLine();
+        String phoneNumber = null;
+        boolean isValidNumber = false;
+
+        while (!isValidNumber) {
+            try {
+                logger.info("Enter the phone number:");
+                phoneNumber = scanner.nextLine();
+                validatePhoneNUmber(phoneNumber);
+                isValidNumber = true;
+            } catch (CustomerDataException e) {
+                logger.warn(e.getMessage() + " Please try again.");
+            }
+        }
+
+        return phoneNumber;
     }
 
 
@@ -112,7 +122,7 @@ public class Utils {
         }
         validatePhoneNUmber(phoneNumber);
         try {
-            Customer customer = findCustomer(agency, phoneNumber);
+            Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
             logger.info("Pass travel id");
             int id = scanner.nextInt();
             Travel travel = selectTravel(id, agency);
@@ -121,13 +131,6 @@ public class Utils {
             logger.info(e.getMessage());
         }
     }
-
-    private static Customer findCustomer(Agency agency, String phoneNumber) throws CustomerDataException {
-        Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
-        logger.info("Booking transport for customer: " + customer.getName());
-        return customer;
-    }
-
     private static Travel selectTravel(int id, Agency agency) throws CustomerDataException {
 
         Optional<Travel> travelOptional = agency.getTravelById(id);

@@ -15,10 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static com.solvd.agency.utils.Utils.*;
 
@@ -26,33 +23,51 @@ public class CreationUtils {
     private static final Scanner scanner = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger(CreationUtils.class);
 
-    public static void createCustomer(String name, String surname, String phoneNumber, Agency agency) throws CustomerDataException {
+    public static void createCustomer(Agency agency) throws CustomerDataException {
         try {
+
+            logger.info("Enter name: ");
+            String name = scanner.next();
             validateData(name);
+
+            logger.info("Enter surname: ");
+            String surname = scanner.next();
             validateData(surname);
+
+            logger.info("Enter phone number: ");
+            String phoneNumber = scanner.next();
             validatePhoneNUmber(phoneNumber);
-        }
-        catch(CustomerDataException e){
-            e.getMessage();
-        }
+
             Customer customer = new Customer(name, surname, phoneNumber);
             logger.info("Customer created");
             agency.addCustomer(customer);
 
+        } catch (CustomerDataException e) {
+            logger.info(e.getMessage());
+        }
+
+
     }
 
-    public static void createAgent(String name, String surname, Agency agency) throws CustomerDataException {
+    public static void createAgent(Agency agency) throws CustomerDataException {
         logger.info("Creating a new agent...");
-        try{
-        validateData(name);
-        validateData(surname);
+        try {
+            logger.info("Enter name: ");
+            String name = scanner.next();
+            validateData(name);
+
+            logger.info("Enter surname: ");
+            String surname = scanner.next();
+            validateData(surname);
+
+            Agent agent = new Agent(agency.getAgents().size() + 1, name, surname);
+            logger.info("Agent created");
+            agency.addAgent(agent);
+
+        } catch (CustomerDataException e) {
+            logger.warn(e.getMessage());
         }
-        catch(CustomerDataException e){
-            e.getMessage();
-        }
-        Agent agent = new Agent(agency.getAgents().size() + 1, name, surname);
-        logger.info("Agent created");
-        agency.addAgent(agent);
+
     }
 
 //    public static Location createLocation() {
@@ -106,23 +121,35 @@ public class CreationUtils {
             logger.debug("Travel ID already exists, generating a new one.");
         }
     }
+
     private static Destination selectDestination() {
         Map<Integer, Destination> destinationMap = createDestinationMap();
         logger.debug("Destination map created");
 
         while (true) {
-            System.out.println("Choose your destination:\n");
-            displayMap(destinationMap);
-            int key = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-            if (destinationMap.containsKey(key)) {
-                Destination destination = destinationMap.get(key);
-                logger.info("Destination selected: {}", destination);
-                return destination;
+            try {
+                logger.info("Choose your destination:\n");
+                displayMap(destinationMap);
+                int key = scanner.nextInt();
+                scanner.nextLine();
+                if (destinationMap.containsKey(key)) {
+                    Destination destination = destinationMap.get(key);
+                    logger.info("Destination selected: {}", destination);
+                    return destination;
+                }
+                break;
             }
-            logger.warn("Invalid destination key selected: {}", key);
+            catch(InputMismatchException e) {
+                logger.warn("Invalid destination selected");
+            }
+            finally
+            {
+                scanner.nextLine();
+            }
         }
+        return null;
     }
+
     private static Transport selectTransport() {
         Map<Integer, Transport> transportMap = createTransportMap();
         logger.debug("Transport map created");
@@ -131,7 +158,7 @@ public class CreationUtils {
             System.out.println("Choose your transport:\n");
             displayMap(transportMap);
             int key = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
             if (transportMap.containsKey(key)) {
                 Transport transport = transportMap.get(key);
                 logger.info("Transport selected: {}", transport);
@@ -140,6 +167,7 @@ public class CreationUtils {
             logger.warn("Invalid transport key selected: {}", key);
         }
     }
+
     private static LocalDate setTravelDate() {
         System.out.println("Enter +days to the travel date");
         int days = scanner.nextInt();
@@ -152,10 +180,11 @@ public class CreationUtils {
     private static double setTravelPrice() {
         System.out.println("Set the price");
         double price = scanner.nextDouble();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine();
         logger.debug("Price set to: {}", price);
         return price;
     }
+
     public static void createAndAddTravel(Agency agency) {
         try {
             int id = generateUniqueTravelId(agency);
@@ -198,6 +227,7 @@ public class CreationUtils {
 
         return map;
     }
+
     public static Map<Integer, Transport> createTransportMap() {
         Transport transport1 = new Transport("Transport A", 50);
         Transport transport2 = new Transport("Transport B", 100);
@@ -216,8 +246,11 @@ public class CreationUtils {
         Insurance insurance1 = new Insurance("INS001", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 100.0);
         insuranceMap.put(1, insurance1);
 
-        Insurance insurance2 = new Insurance("INS002", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 150.0);
+        Insurance insurance2 = new Insurance("INS002", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 200.0);
         insuranceMap.put(2, insurance2);
+
+        Insurance insurance3 = new Insurance("INS002", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 400);
+        insuranceMap.put(3, insurance3);
 
         return insuranceMap;
     }

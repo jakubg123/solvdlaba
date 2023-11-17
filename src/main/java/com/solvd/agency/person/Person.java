@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
-public abstract class Person implements Transportable, Displayable {
+public abstract class Person implements Displayable {
 
     private String name;
     private String surname;

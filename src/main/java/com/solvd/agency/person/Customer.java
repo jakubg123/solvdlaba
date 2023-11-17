@@ -2,7 +2,6 @@ package com.solvd.agency.person;
 
 
 import com.solvd.agency.exceptions.CustomerDataException;
-import com.solvd.agency.exceptions.PaymentException;
 import com.solvd.agency.other.Location;
 import com.solvd.agency.place.Agency;
 import com.solvd.agency.service.Insurance;
@@ -10,6 +9,8 @@ import com.solvd.agency.service.Transport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
@@ -96,26 +97,6 @@ public class Customer extends Person {
 
 
     @Override
-    public void getOnTransport(Transport transport, Location location, double price) {
-        if (this.balance > price) {
-            this.setBalance(getBalance() - price);
-            System.out.printf("I paid %.2f for this %s.%nMy destination is city: %s street: %s",
-                    price, transport.getName(), location.getCity(), location.getStreet());
-
-        } else {
-            logger.info("You are broke!");
-        }
-
-    }
-
-    @Override
-    public void getOffTransport(Transport transport) {
-
-        logger.info(this.getName() + "out of " + transport.toString());
-
-    }
-
-    @Override
     public void displayInfo() {
         if (this.insurance != null) {
             logger.info(this.toString() + " " + insurance.getInsuranceNumber());
@@ -166,14 +147,38 @@ public class Customer extends Person {
         this.balance -= price;
     }
 
-    public void addBalance(double balance) {
-        this.balance = this.balance + balance;
-    }
-
 
     public static Customer getCustomerByPhoneNumber(Agency agency) throws CustomerDataException {
         String phoneNumber = readPhoneNumber();
         return agency.findCustomerByPhoneNumber(phoneNumber);
+    }
+
+    public void addBalance() {
+        BigDecimal money = null;
+        while (true) {
+            try {
+                logger.info("Enter balance:");
+                String input = scanner.nextLine();
+                money = new BigDecimal(input);
+
+                if (money.compareTo(BigDecimal.ZERO) < 0) {
+                    throw new IllegalArgumentException("Negative value");
+                }
+                double verifiedBalance = money.doubleValue();
+                this.balance = this.balance + verifiedBalance;
+                break;
+            } catch (NumberFormatException e) {
+                logger.warn("Invalid value.");
+
+            }
+            catch (InputMismatchException | IllegalArgumentException e) {
+                logger.warn(e.getMessage());
+            }
+            finally{
+                scanner.nextLine();
+            }
+
+        }
     }
 
 
