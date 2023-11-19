@@ -76,8 +76,7 @@ public class Main {
                         break;
 
                     case 8:
-                        phoneNumber = readPhoneNumber();
-                        bookTravelForCustomer(phoneNumber, agency);
+                        bookTravelForCustomer(agency);
                         agency.displayInfo();
                         break;
                     case 9:

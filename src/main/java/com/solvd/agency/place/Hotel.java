@@ -4,10 +4,12 @@ package com.solvd.agency.place;
 import com.solvd.agency.exceptions.ReservationException;
 import com.solvd.agency.interfaces.Reservable;
 import com.solvd.agency.interfaces.Reviewable;
+import com.solvd.agency.person.Customer;
 import com.solvd.agency.service.Review;
 
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Hotel implements Reservable, Reviewable {
     private static final Logger logger = Logger.getLogger(Hotel.class.getName());
@@ -81,6 +83,20 @@ public class Hotel implements Reservable, Reviewable {
 
     public boolean isRoomAvailable(int roomId) {
         return roomReservationStatus.containsKey(roomId) && !roomReservationStatus.get(roomId);
+    }
+
+    public Integer getRandomAvailableRoomId() {
+        List<Integer> availableRoomIds = roomReservationStatus.entrySet().stream()
+                .filter(entry -> !entry.getValue())
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        if (availableRoomIds.isEmpty()) {
+            return null;
+        }
+
+        Random random = new Random();
+        return availableRoomIds.get(random.nextInt(availableRoomIds.size()));
     }
 
     public void addReview(Review review) throws Exception {

@@ -171,7 +171,7 @@ public class CreationUtils {
     private static LocalDate setTravelDate() {
         System.out.println("Enter +days to the travel date");
         int days = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine();
         LocalDate travelDate = LocalDate.now().plusDays(days);
         logger.debug("Travel date set to: {}", travelDate);
         return travelDate;

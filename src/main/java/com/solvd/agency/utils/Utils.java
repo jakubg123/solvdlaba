@@ -115,17 +115,25 @@ public class Utils {
     }
 
 
-    public static void bookTravelForCustomer(String phoneNumber, Agency agency) throws CustomerDataException {
+    public static void bookTravelForCustomer( Agency agency) throws CustomerDataException {
         if (agency.getCustomers().isEmpty()) {
             logger.info("\nThere are no customers!\n");
             return;
         }
+        String phoneNumber = readPhoneNumber();
         validatePhoneNUmber(phoneNumber);
         try {
             Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
             logger.info("Pass travel id");
             int id = scanner.nextInt();
             Travel travel = selectTravel(id, agency);
+
+            Integer roomId = travel.getDestination().getHotel().getRandomAvailableRoomId();
+            if (roomId == null) {
+                logger.info("No available rooms to reserve.");
+                return;
+            }
+            travel.getDestination().getHotel().reserve(roomId);
             bookTravelFor(customer, travel);
         } catch (CustomerDataException | PaymentException e) {
             logger.info(e.getMessage());
