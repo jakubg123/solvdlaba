@@ -12,7 +12,7 @@ public class LuxuryHotel extends Hotel {
     private Location location;
 
     public LuxuryHotel(String name, Location location, Map<Integer, Boolean> rooms, int starRating, List<String> amenities) {
-        super(name, rooms);
+        super(name, rooms.size());
         this.starRating = starRating;
         this.amenities = amenities;
     }

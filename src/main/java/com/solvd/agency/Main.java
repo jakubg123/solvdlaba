@@ -35,6 +35,8 @@ public class Main {
         Transport transport = new Transport("Bus", 40);
         Agency agency = new Agency("MyAgency", location, agents);
 
+        agency.setTravels(inProgressTravel());
+
         boolean exit = false;
         logger.info("Welcome to the Travel Agency");
 

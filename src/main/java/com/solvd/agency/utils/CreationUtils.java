@@ -1,6 +1,7 @@
 package com.solvd.agency.utils;
 
 import com.solvd.agency.exceptions.CustomerDataException;
+import com.solvd.agency.exceptions.InvalidDateException;
 import com.solvd.agency.exceptions.TravelExistsException;
 import com.solvd.agency.other.Destination;
 import com.solvd.agency.other.Location;
@@ -138,12 +139,9 @@ public class CreationUtils {
                     return destination;
                 }
                 break;
-            }
-            catch(InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 logger.warn("Invalid destination selected");
-            }
-            finally
-            {
+            } finally {
                 scanner.nextLine();
             }
         }
@@ -169,16 +167,15 @@ public class CreationUtils {
     }
 
     private static LocalDate setTravelDate() {
-        System.out.println("Enter +days to the travel date");
-        int days = scanner.nextInt();
-        scanner.nextLine();
-        LocalDate travelDate = LocalDate.now().plusDays(days);
+        logger.info("Enter a date (yyyy-mm-dd): ");
+        String dateString = scanner.nextLine();
+        LocalDate travelDate = LocalDate.parse(dateString);
         logger.debug("Travel date set to: {}", travelDate);
         return travelDate;
     }
 
     private static double setTravelPrice() {
-        System.out.println("Set the price");
+        logger.info("Set the price");
         double price = scanner.nextDouble();
         scanner.nextLine();
         logger.debug("Price set to: {}", price);
@@ -191,29 +188,26 @@ public class CreationUtils {
             Destination destination = selectDestination();
             Transport transport = selectTransport();
             LocalDate travelDate = setTravelDate();
+            LocalDate endDate = setTravelDate();
+            if (endDate.isBefore(travelDate)) {
+                throw new InvalidDateException("Wrong date");
+            }
             double price = setTravelPrice();
 
-            Travel travel = new Travel(id, transport, destination, travelDate, price);
+            Travel travel = new Travel(id, transport, destination, travelDate, endDate, price);
             agency.addTravel(travel);
             logger.info("Travel created successfully: {}", travel);
-        } catch (CustomerDataException e) {
+        } catch (CustomerDataException | InvalidDateException | InputMismatchException e) {
             logger.error(e.getMessage());
         }
+
     }
 
     public static Map<Integer, Destination> createDestinationMap() {
         Map<Integer, Boolean> roomReservationStatus1 = new HashMap<>();
-        for (int i = 1; i <= 10; i++) {
-            roomReservationStatus1.put(i, false);
-        }
 
-        Map<Integer, Boolean> roomReservationStatus2 = new HashMap<>();
-        for (int i = 1; i <= 15; i++) {
-            roomReservationStatus2.put(i, false);
-        }
-
-        Hotel hotel1 = new Hotel("Hotel A", roomReservationStatus1);
-        Hotel hotel2 = new Hotel("Hotel B", roomReservationStatus2);
+        Hotel hotel1 = new Hotel("Hotel A", 15);
+        Hotel hotel2 = new Hotel("Hotel B", 10);
 
         Location location1 = new Location("testStreet", "testCity", "testCountry");
         Location location2 = new Location("Street", "City", "Country");
@@ -253,6 +247,65 @@ public class CreationUtils {
         insuranceMap.put(3, insurance3);
 
         return insuranceMap;
+    }
+
+    public static List<Transport> inProgressTransport() {
+        Map<String, Transport> transportMap = new HashMap<>();
+        transportMap.put("Transport C", new Transport("big-bus", 2));
+        transportMap.put("Transport D", new Transport("mini-bus", 1));
+
+        List<Transport> transportList = new ArrayList<>(transportMap.values());
+        transportList.get(0).addCustomer(new Customer("a","a","111111111"));
+        transportList.get(0).addCustomer(new Customer("b","b","111111112"));
+        transportList.get(1).addCustomer(new Customer("c","c","111111113"));
+
+        return transportList;
+    }
+
+    public static List<Destination> inProgressDestination() {
+        Location location = new Location("TestStreet", "Warsaw", "Poland");
+        Location location2 = new Location("TestStreet", "Cracow", "Poland");
+        Hotel hotel1 = new Hotel("Hotel C", 20);
+        Hotel hotel2 = new Hotel("Hotel D", 25);
+
+        Destination destination = new Destination(location, hotel1);
+        Destination destination2 = new Destination(location2, hotel2);
+
+
+        List<Destination> destinationList = new ArrayList<>();
+        destinationList.add(destination);
+        destinationList.add(destination2);
+
+        return destinationList;
+    }
+
+
+    public static List<Travel> inProgressTravel() throws CustomerDataException {
+        int id = 10;
+        int id1 = 20;
+        List<Transport> transport = inProgressTransport();
+        List<Destination> destination = inProgressDestination();
+        LocalDate startTravel = LocalDate.parse("2023-10-11");
+        LocalDate endTravel = LocalDate.parse("2023-10-20");
+
+        destination.get(0).getHotel().reserve(1);
+        destination.get(0).getHotel().reserve(2);
+        destination.get(1).getHotel().reserve(1);
+
+        LocalDate startTravel1 = LocalDate.parse("2023-11-20");
+        LocalDate endTravel1 = LocalDate.parse("2023-11-27");
+
+        double price = 200;
+
+        Travel travel = new Travel(id, transport.get(0), destination.get(0),startTravel,endTravel, price);
+        travel.setStatus();
+        Travel travel2 = new Travel(id1, transport.get(1), destination.get(1),startTravel1,endTravel1, price);
+
+        List<Travel> travels = new ArrayList<>();
+        travels.add(travel);
+        travels.add(travel2);
+
+        return travels;
     }
 
 

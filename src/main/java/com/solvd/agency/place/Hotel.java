@@ -19,11 +19,18 @@ public class Hotel implements Reservable, Reviewable {
     private Map<Integer, Boolean> roomReservationStatus;
 
 
-    public Hotel(String name, Map<Integer, Boolean> rooms) {
+    public Hotel(String name, int numberOfRooms) {
         this.name = name;
-        this.roomReservationStatus = rooms != null ? new HashMap<>(rooms) : new HashMap<>();
+        this.roomReservationStatus = initializeRoomStatus(numberOfRooms);
         this.reviews = new HashSet<>();
 
+    }
+
+    public Hotel(String name)
+    {
+        this.name = name;
+        this.reviews = new HashSet<>();
+        this.roomReservationStatus = new HashMap<>();
     }
 
     public String getName() {
@@ -138,6 +145,14 @@ public class Hotel implements Reservable, Reviewable {
             logger.info("Room " + roomId + " at " + name + " is not currently reserved.");
             return false;
         }
+    }
+
+    private Map<Integer, Boolean> initializeRoomStatus(int numberOfRooms) {
+        Map<Integer, Boolean> roomStatusMap = new HashMap<>();
+        for (int i = 1; i <= numberOfRooms; i++) {
+            roomStatusMap.put(i, false);
+        }
+        return roomStatusMap;
     }
 
 

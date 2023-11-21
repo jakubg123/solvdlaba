@@ -1,6 +1,7 @@
 package com.solvd.agency.service;
 
 
+import com.solvd.agency.enums.TravelStatus;
 import com.solvd.agency.exceptions.CustomerDataException;
 import com.solvd.agency.exceptions.DestinationException;
 import com.solvd.agency.exceptions.PaymentException;
@@ -26,15 +27,62 @@ public class Travel implements Discountable, Displayable {
     private Destination destination;
     private Transport transport;
     private LocalDate localDate;
+
+    private LocalDate endDate;
     private double price;
     private double discountedPrice;
 
+
+
+    private TravelStatus status;
+
     private Agency agency;
+
+
+
+    public Travel(int id, Transport transport, Destination destination, LocalDate localDate, LocalDate endDate, double price) throws CustomerDataException {
+
+        if (!isValid(localDate, endDate)) {
+            throw new CustomerDataException("The travel date is not valid.");
+        }
+        this.id = id;
+        this.destination = destination;
+        this.localDate = localDate;
+        this.endDate = endDate;
+        this.transport = transport;
+        this.price = price;
+        setStatus();
+
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public TravelStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus() {
+        if(this.localDate.isBefore(LocalDate.now()) && this.endDate.isBefore(LocalDate.now())){
+            this.status = TravelStatus.FINISHED;
+        }
+        else if(this.localDate.isBefore(LocalDate.now()) && this.endDate.isAfter(LocalDate.now())){
+            this.status = TravelStatus.IN_PROGRESS;
+        }
+        else
+        {
+            this.status = TravelStatus.NOT_STARTED;
+        }
+    }
 
     public Destination getDestination() {
         return destination;
     }
-
 
     public Transport getTransport() {
         return transport;
@@ -74,22 +122,8 @@ public class Travel implements Discountable, Displayable {
     }
 
 
-    public Travel(int id, Transport transport, Destination destination, LocalDate localDate, double price) throws CustomerDataException {
-
-        if (!isValid(localDate)) {
-            throw new CustomerDataException("The travel date is not valid.");
-        }
-        this.id = id;
-        this.destination = destination;
-        this.localDate = localDate;
-        this.transport = transport;
-        this.price = price;
-
-    }
-
-
-    public boolean isValid(LocalDate localDate) {
-        boolean isValid = LocalDate.now().isBefore(localDate);
+    public boolean isValid(LocalDate localDate, LocalDate localDate2) {
+        boolean isValid = localDate.isBefore(localDate2);
         if (!isValid) {
             logger.error("The travel date is not valid.");
         }
@@ -132,7 +166,9 @@ public class Travel implements Discountable, Displayable {
                 ", destination=" + destination +
                 ", transport=" + transport +
                 ", localDate=" + localDate +
+                ", end date=" + endDate +
                 ", price=" + price +
+                ", status=" + status +
                 ", customers" + seatsToString() +
                 '}';
     }
