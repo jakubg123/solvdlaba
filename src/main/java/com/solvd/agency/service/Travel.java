@@ -10,6 +10,7 @@ import com.solvd.agency.interfaces.Displayable;
 import com.solvd.agency.other.Destination;
 import com.solvd.agency.person.Customer;
 import com.solvd.agency.place.Agency;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -51,6 +52,7 @@ public class Travel implements Discountable, Displayable {
         this.endDate = endDate;
         this.transport = transport;
         this.price = price;
+        this.discountedPrice = price;
         setStatus();
 
     }
@@ -125,7 +127,7 @@ public class Travel implements Discountable, Displayable {
     public boolean isValid(LocalDate localDate, LocalDate localDate2) {
         boolean isValid = localDate.isBefore(localDate2);
         if (!isValid) {
-            logger.error("The travel date is not valid.");
+            logger.error(StringUtils.capitalize("The travel date is not valid."));
         }
         return isValid;
     }
@@ -153,7 +155,7 @@ public class Travel implements Discountable, Displayable {
 
     public void setDestination(Destination destination) throws DestinationException {
         if (destination == null) {
-            logger.error("Invalid destination provided");
+            logger.error(StringUtils.abbreviate("Invalid destination provided",20));
             throw new DestinationException("Invalid destination provided.");
         }
         this.destination = destination;
@@ -185,13 +187,19 @@ public class Travel implements Discountable, Displayable {
     }
 
 
-    public void bookSeat(Customer customer) {
+    public void bookSeat(Customer customer, boolean discount) {
         for (int i = 0; i < this.transport.getSeats().size(); i++) {
             if (this.transport.getSeats().get(i) == null) {
                 this.transport.getSeats().set(i, customer);
                 this.transport.bookOneSeat();
-                customer.setBalance(customer.getBalance() - price);
-                return;
+                if(discount) {
+                    customer.setBalance(customer.getBalance() - discountedPrice);
+                    return;
+                }
+                else{
+                    customer.setBalance((customer.getBalance() - price));
+                }
+
             }
         }
     }

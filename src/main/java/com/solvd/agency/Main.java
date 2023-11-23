@@ -11,9 +11,16 @@ import com.solvd.agency.place.Agency;
 import com.solvd.agency.service.Insurance;
 import com.solvd.agency.service.Transport;
 import com.solvd.agency.service.Travel;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +34,7 @@ public class Main {
 
     public static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException {
+    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException, IOException {
         Map<Integer, Insurance> insuranceMap = createInsuranceMap();
         Location location = new Location("testStreet", "testCity", "testCountry");
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +46,7 @@ public class Main {
 
         boolean exit = false;
         logger.info("Welcome to the Travel Agency");
-
+        File file = new File("target/fileExercise.txt");
         while (!exit) {
 
             printMenu();
@@ -88,19 +95,36 @@ public class Main {
                         exit = true;
                         break;
                     default:
+                        FileUtils.write(file, "User inserted: " + choice + "\n",  StandardCharsets.UTF_8, true);
                         logger.info("Enter a number between 1 and 10.");
                         logger.warn("Invalid input: {}", choice);
                 }
             } catch (java.util.InputMismatchException e) {
                 logger.error("Use numbers to move around the console app");
                 scanner.nextLine();
+            } catch (IOException e) {
+               logger.error(e.getMessage());
             }
+
 
         }
         scanner.close();
         logger.info("End");
+        String storage = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+        System.out.println(storage);
+
+        String read = readFirstLineFromFile("fileExercise.txt");
+        System.out.println(read);
 
 
+
+    }
+
+    static String readFirstLineFromFile(String path) throws IOException {
+        try (FileReader fr = new FileReader(path);
+             BufferedReader br = new BufferedReader(fr)) {
+            return br.readLine();
+        }
     }
 
 

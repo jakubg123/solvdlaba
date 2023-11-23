@@ -153,23 +153,47 @@ public class Utils {
             throw new CustomerDataException("No seats available on the transport!");
         }
 
-        applyDiscountIfNeeded(travel);
+        boolean discount = askForDiscount(travel);
 
         if (customer.getBalance() < travel.getPrice()) {
             throw new CustomerDataException("Insufficient balance to book the flight.");
         }
 
-        travel.bookSeat(customer);
+        travel.bookSeat(customer, discount);
         logger.info("Transport booked successfully!");
     }
 
     private static void applyDiscountIfNeeded(Travel travel) throws PaymentException {
-        Period diff = Period.between(travel.getLocalDate(), LocalDate.now());
-        int diffDays = diff.getDays();
-        if (diffDays <= 3) {
-            logger.info("Last minute discount!");
-            travel.applyDiscount(50);
+        try
+        {
+            double percentage = scanner.nextDouble();
+            travel.applyDiscount(percentage);
         }
+        catch(InputMismatchException e){
+            logger.warn(e.getMessage());
+        }
+
+    }
+
+
+    private static boolean askForDiscount(Travel travel) throws PaymentException {
+        boolean discount = false;
+        System.out.println("Should we provide a discount for this customer?, y/n");
+
+        try {
+            if (Period.between(travel.getLocalDate(), LocalDate.now()).getDays() > 3) {
+                String answer = scanner.nextLine();
+                if (answer.equalsIgnoreCase("y")) {
+                    double percentage = scanner.nextDouble();
+                    travel.applyDiscount(percentage);
+                    discount = true;
+                }
+            }
+        } catch (InputMismatchException e) {
+            logger.error(e.getMessage());
+        }
+
+        return discount;
     }
 
 

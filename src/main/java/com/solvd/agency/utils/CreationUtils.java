@@ -12,6 +12,7 @@ import com.solvd.agency.place.Hotel;
 import com.solvd.agency.service.Insurance;
 import com.solvd.agency.service.Transport;
 import com.solvd.agency.service.Travel;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,11 +29,11 @@ public class CreationUtils {
         try {
 
             logger.info("Enter name: ");
-            String name = scanner.next();
+            String name = StringUtils.strip(scanner.nextLine());
             validateData(name);
 
             logger.info("Enter surname: ");
-            String surname = scanner.next();
+            String surname = StringUtils.strip(scanner.nextLine());
             validateData(surname);
 
             logger.info("Enter phone number: ");
@@ -54,7 +55,7 @@ public class CreationUtils {
         logger.info("Creating a new agent...");
         try {
             logger.info("Enter name: ");
-            String name = scanner.next();
+            String name = StringUtils.strip(scanner.nextLine());
             validateData(name);
 
             logger.info("Enter surname: ");
@@ -237,7 +238,7 @@ public class CreationUtils {
     public static Map<Integer, Insurance> createInsuranceMap() {
         Map<Integer, Insurance> insuranceMap = new HashMap<>();
 
-        Insurance insurance1 = new Insurance("INS001", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 100.0);
+        Insurance insurance1 = new Insurance(StringUtils.capitalize("ins001"), LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 100.0);
         insuranceMap.put(1, insurance1);
 
         Insurance insurance2 = new Insurance("INS002", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), 200.0);

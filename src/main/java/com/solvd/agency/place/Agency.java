@@ -2,6 +2,7 @@ package com.solvd.agency.place;
 
 
 import com.solvd.agency.exceptions.CustomerDataException;
+import com.solvd.agency.interfaces.Cleanable;
 import com.solvd.agency.interfaces.Displayable;
 import com.solvd.agency.interfaces.Reviewable;
 import com.solvd.agency.other.Destination;
@@ -14,13 +15,16 @@ import com.solvd.agency.service.Travel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.solvd.agency.utils.Utils.readPhoneNumber;
 import static com.solvd.agency.utils.Utils.validatePhoneNUmber;
 
 
-public class Agency implements Reviewable, Displayable {
+public class Agency implements Reviewable, Displayable, Cleanable {
 
     private static final Logger logger = LogManager.getLogger(Agent.class.getName());
 
@@ -29,6 +33,8 @@ public class Agency implements Reviewable, Displayable {
     private Deque<Review> reviews;
     private List<Agent> agents;
     private List<Travel> travels;
+
+    private boolean isClean;
 
 
     private List<Customer> customers;
@@ -42,6 +48,7 @@ public class Agency implements Reviewable, Displayable {
         this.location = location;
         this.agents = agents;
         this.customers = new ArrayList<>();
+        this.isClean = false;
     }
 
 
@@ -225,6 +232,18 @@ public class Agency implements Reviewable, Displayable {
     }
 
 
+    @Override
+    public void clean() {
+        LocalDateTime today = LocalDateTime.now();
+        int hour = today.getHour();
 
+        if(hour > 18){
+            System.out.println("Cleaning service arrived");
+            isClean = true;
+        }
+        else{
+            System.out.println("Cleaning service can't arrive until 6 PM");
+        }
+    }
 }
 

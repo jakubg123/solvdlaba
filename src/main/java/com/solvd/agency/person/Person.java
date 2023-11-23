@@ -2,7 +2,6 @@ package com.solvd.agency.person;
 
 
 import com.solvd.agency.interfaces.Displayable;
-import com.solvd.agency.interfaces.Transportable;
 import com.solvd.agency.service.Transport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

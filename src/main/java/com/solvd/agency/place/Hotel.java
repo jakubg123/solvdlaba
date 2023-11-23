@@ -2,6 +2,7 @@ package com.solvd.agency.place;
 
 
 import com.solvd.agency.exceptions.ReservationException;
+import com.solvd.agency.interfaces.Cleanable;
 import com.solvd.agency.interfaces.Reservable;
 import com.solvd.agency.interfaces.Reviewable;
 import com.solvd.agency.person.Customer;
@@ -11,12 +12,13 @@ import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class Hotel implements Reservable, Reviewable {
+public class Hotel implements Reservable, Reviewable  {
     private static final Logger logger = Logger.getLogger(Hotel.class.getName());
 
     private String name;
     private Set<Review> reviews;
     private Map<Integer, Boolean> roomReservationStatus;
+
 
 
     public Hotel(String name, int numberOfRooms) {
@@ -154,6 +156,7 @@ public class Hotel implements Reservable, Reviewable {
         }
         return roomStatusMap;
     }
+
 
 
 }
