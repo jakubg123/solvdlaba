@@ -4,6 +4,7 @@ package com.solvd.agency;
 import com.solvd.agency.exceptions.CustomerDataException;
 import com.solvd.agency.exceptions.PaymentException;
 import com.solvd.agency.exceptions.TravelExistsException;
+import com.solvd.agency.other.Destination;
 import com.solvd.agency.other.Location;
 import com.solvd.agency.person.Agent;
 import com.solvd.agency.person.Customer;
@@ -25,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static com.solvd.agency.person.Customer.getCustomerByPhoneNumber;
 import static com.solvd.agency.utils.CreationUtils.*;
@@ -39,10 +43,8 @@ public class Main {
         Location location = new Location("testStreet", "testCity", "testCountry");
         Scanner scanner = new Scanner(System.in);
         List<Agent> agents = new ArrayList<>();
-        Transport transport = new Transport("Bus", 40);
         Agency agency = new Agency("MyAgency", location, agents);
 
-        agency.setTravels(inProgressTravel());
 
         boolean exit = false;
         logger.info("Welcome to the Travel Agency");
@@ -63,7 +65,7 @@ public class Main {
                         display(agency.getAgents());
                         break;
                     case 2:
-                        display(agency.getCustomers());
+                        agency.displayCustomers();
                         break;
                     case 3:
                         displayAllTravels(agency);
@@ -92,6 +94,29 @@ public class Main {
                         createAndAddTravel(agency);
                         break;
                     case 10:
+                        Predicate<Travel> travelFilter = travel -> travel.getPrice() < 200;
+                        List<Travel> filteredTravels = agency.filterTravels(travelFilter);
+                        logger.info(filteredTravels);
+                        break;
+                    case 11:
+                        Function<Travel, String> getHotelNameFromTravel = travel -> travel.getDestination().getHotel().getName();
+                        List<String> hotelNames = agency.getTravels().stream()
+                                .map(getHotelNameFromTravel)
+                                .collect(Collectors.toList());
+                        logger.info(hotelNames);
+                        break;
+                    case 12:
+
+                        agency.addReviewSupplier();
+                    case 13:
+                        String country = "Poland";
+                        Predicate<Travel> isTravelInCountry = travel -> travel.getDestination().getLocation().getCountry().equalsIgnoreCase(country);
+                        List<Travel> travelsInPoland = agency.getTravels().stream()
+                                .filter(isTravelInCountry)
+                                .collect(Collectors.toList());
+                        logger.info(travelsInPoland);
+                        break;
+                    case 14:
                         exit = true;
                         break;
                     default:
@@ -113,7 +138,7 @@ public class Main {
         String storage = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
         System.out.println(storage);
 
-        String read = readFirstLineFromFile("fileExercise.txt");
+        String read = readFirstLineFromFile("target/fileExercise.txt");
         System.out.println(read);
 
 

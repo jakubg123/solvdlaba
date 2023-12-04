@@ -16,8 +16,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.OptionalInt;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Travel implements Discountable, Displayable {
     private static final Scanner scanner = new Scanner(System.in);
@@ -183,35 +186,37 @@ public class Travel implements Discountable, Displayable {
 
     @Override
     public void displayInfo() {
-        logger.info(this.toString());
+        StringBuilder info = new StringBuilder();
+        info.append("Travel ID: ").append(id)
+                .append(", Destination: ").append(destination)
+                .append(", Transport: ").append(transport.getName())
+                .append(", Transport Type: ").append(transport.getTransportType().getName())
+                .append(", Start Date: ").append(localDate)
+                .append(", End Date: ").append(endDate)
+                .append(", Price: ").append(price)
+                .append(", Status: ").append(status);
+
+        logger.info(info.toString());
     }
 
 
     public void bookSeat(Customer customer, boolean discount) {
-        for (int i = 0; i < this.transport.getSeats().size(); i++) {
-            if (this.transport.getSeats().get(i) == null) {
-                this.transport.getSeats().set(i, customer);
-                this.transport.bookOneSeat();
-                if(discount) {
-                    customer.setBalance(customer.getBalance() - discountedPrice);
-                    return;
-                }
-                else{
-                    customer.setBalance((customer.getBalance() - price));
-                }
+        OptionalInt seatIndex = IntStream.range(0, this.transport.getSeats().size())
+                .filter(i -> this.transport.getSeats().get(i) == null)
+                .findFirst();
 
-            }
+        if (seatIndex.isPresent()) {
+            this.transport.getSeats().set(seatIndex.getAsInt(), customer);
+            this.transport.bookOneSeat();
+            double priceToDeduct = discount ? discountedPrice : price;
+            customer.setBalance(customer.getBalance() - priceToDeduct);
         }
     }
 
     public boolean isSeatAvailable() {
-        for (Customer seat : this.transport.getSeats()) {
-            if (seat == null) {
-                return true;
-            }
-        }
-        return false;
+        return this.transport.getSeats().stream().anyMatch(Objects::isNull);
     }
+
 
 
 }

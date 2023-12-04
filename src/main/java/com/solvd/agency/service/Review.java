@@ -4,7 +4,10 @@ import com.solvd.agency.interfaces.Displayable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.function.Supplier;
+
 
 public class Review implements Displayable {
     private static final Logger logger = LogManager.getLogger(Review.class);
@@ -59,4 +62,6 @@ public class Review implements Displayable {
     public void displayInfo() {
         logger.info(this.toString());
     }
+
+
 }

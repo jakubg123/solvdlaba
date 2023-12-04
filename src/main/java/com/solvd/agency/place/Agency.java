@@ -19,6 +19,10 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import static com.solvd.agency.utils.Utils.readPhoneNumber;
 import static com.solvd.agency.utils.Utils.validatePhoneNUmber;
@@ -120,11 +124,10 @@ public class Agency implements Reviewable, Displayable, Cleanable {
     public float getAverageRating() {
         if (this.reviews.isEmpty()) return 0;
 
-        float sum = 0;
-        for (Review review : reviews) {
-            sum += review.getRating();
-        }
-        return sum / this.reviews.size();
+        return (float) reviews.stream()
+                .mapToDouble(Review::getRating)
+                .average()
+                .orElse(0.0);
     }
 
 
@@ -158,12 +161,7 @@ public class Agency implements Reviewable, Displayable, Cleanable {
     }
 
     public boolean findTravelById(int travelId) {
-        for (Travel travel : travels) {
-            if (travel.getId() == travelId) {
-                return true;
-            }
-        }
-        return false;
+        return travels.stream().anyMatch(travel -> travel.getId() == travelId);
     }
 
     public Optional<Travel> getTravelById(int travelId) {
@@ -172,12 +170,7 @@ public class Agency implements Reviewable, Displayable, Cleanable {
 
 
     public boolean isDestinationAvailable(Destination destination) {
-        for (Travel travel : travels) {
-            if (travel.getDestination().equals(destination)) {
-                return true;
-            }
-        }
-        return false;
+        return travels.stream().anyMatch(travel -> travel.getDestination().equals(destination));
     }
 
 
@@ -245,5 +238,43 @@ public class Agency implements Reviewable, Displayable, Cleanable {
             System.out.println("Cleaning service can't arrive until 6 PM");
         }
     }
+
+    public List<Travel> filterTravels(Predicate<Travel> travelFilter) {
+        return this.travels.stream()
+                .filter(travelFilter)
+                .collect(Collectors.toList());
+    }
+
+    public void addReviewSupplier(){
+        this.reviews.add(reviewSupplier.get());
+    }
+    public Supplier<Review> reviewSupplier = () -> {
+        Scanner scanner = new Scanner(System.in);
+
+        logger.info("Enter review comment: ");
+        String name = scanner.nextLine();
+
+        logger.info("Enter review body");
+        String body = scanner.nextLine();
+
+        logger.info("Enter rating (1-5): ");
+        int rating = scanner.nextInt();
+        scanner.nextLine();
+
+        return new Review(name,body, rating);
+    };
+
+    public Consumer<Customer> printCustomer = customer ->
+            logger.info("Customer: " + customer.getName() + " " + customer.getSurname() +
+                    ", Phone: " + customer.getPhoneNumber() + ", balance" + customer.getBalance());
+
+    public void displayCustomers() {
+        if(this.getCustomers().isEmpty())
+        {
+            logger.info("No customers registered");
+        }
+        this.customers.forEach(printCustomer);
+    }
+
 }
 

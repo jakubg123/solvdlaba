@@ -1,5 +1,6 @@
 package com.solvd.agency.service;
 
+import com.solvd.agency.enums.TransportType;
 import com.solvd.agency.interfaces.Cleanable;
 import com.solvd.agency.interfaces.Displayable;
 import com.solvd.agency.person.Customer;
@@ -9,10 +10,8 @@ import org.apache.logging.log4j.Logger;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Transport implements Displayable, Cleanable {
     private static final Logger logger = LogManager.getLogger(Transport.class);
@@ -21,15 +20,20 @@ public class Transport implements Displayable, Cleanable {
     private List<Customer> seats;
     private int availableSeats;
     private boolean isClean;
+    private TransportType transportType;
 
 
-    public Transport(String name, int seatCount) {
-        this.name = name;
+
+    public Transport(int seatCount, TransportType transportType) {
         this.seats = new ArrayList<Customer>(Collections.nCopies(seatCount, null));
         this.availableSeats = seatCount;
         this.isClean = false;
+        this.transportType = transportType;
     }
 
+    public TransportType getTransportType() {
+        return transportType;
+    }
 
     public int getAvailableSeats() {
         return availableSeats;
@@ -64,15 +68,12 @@ public class Transport implements Displayable, Cleanable {
 
     @Override
     public String toString() {
-        StringBuilder info = new StringBuilder("Transport " + name + ", availableSeats " + availableSeats);
-        info.append(", Taken Seats=[");
-        for (Customer seat : seats) {
-            if (seat != null) {
-                info.append(seat.toString()).append(", ");
-            }
-        }
-        info.append("]");
-        return info.toString();
+        String takenSeats = seats.stream()
+                .filter(Objects::nonNull)
+                .map(Customer::toString)
+                .collect(Collectors.joining(", "));
+
+        return "AvailableSeats " + availableSeats + ", Taken Seats=[" + takenSeats + "]";
     }
 
     @Override

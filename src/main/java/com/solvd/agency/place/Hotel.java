@@ -2,10 +2,8 @@ package com.solvd.agency.place;
 
 
 import com.solvd.agency.exceptions.ReservationException;
-import com.solvd.agency.interfaces.Cleanable;
 import com.solvd.agency.interfaces.Reservable;
 import com.solvd.agency.interfaces.Reviewable;
-import com.solvd.agency.person.Customer;
 import com.solvd.agency.service.Review;
 
 import java.util.*;
@@ -118,23 +116,21 @@ public class Hotel implements Reservable, Reviewable  {
     }
 
     @Override
-    public boolean reserve(int roomId) {
+    public void reserve(int roomId) {
         if (!roomReservationStatus.containsKey(roomId)) {
             logger.warning("Room ID " + roomId + " does not exist.");
-            return false;
+            return;
         }
         if (isRoomAvailable(roomId)) {
             roomReservationStatus.put(roomId, true);
             logger.info("Room " + roomId + " at " + name + " has been reserved.");
-            return true;
         } else {
             logger.info("Room " + roomId + " at " + name + " is already reserved.");
-            return false;
         }
     }
 
     @Override
-    public boolean cancelReservation(int roomId) throws ReservationException {
+    public void cancelReservation(int roomId) throws ReservationException {
         if (!roomReservationStatus.containsKey(roomId)) {
             logger.warning("Room " + roomId + " not found");
             throw new ReservationException("Room " + roomId + " not found");
@@ -142,10 +138,8 @@ public class Hotel implements Reservable, Reviewable  {
         if (roomReservationStatus.get(roomId)) {
             roomReservationStatus.put(roomId, false);
             logger.info("Reservation for room " + roomId + " at " + name + " has been cancelled.");
-            return true;
         } else {
             logger.info("Room " + roomId + " at " + name + " is not currently reserved.");
-            return false;
         }
     }
 

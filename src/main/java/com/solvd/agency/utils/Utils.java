@@ -4,6 +4,7 @@ package com.solvd.agency.utils;
 import com.solvd.agency.Main;
 import com.solvd.agency.exceptions.CustomerDataException;
 import com.solvd.agency.exceptions.PaymentException;
+import com.solvd.agency.exceptions.ReservationException;
 import com.solvd.agency.interfaces.Displayable;
 import com.solvd.agency.interfaces.Reviewable;
 import com.solvd.agency.person.Customer;
@@ -57,7 +58,11 @@ public class Utils {
         logger.info("7. Customer get insurance");
         logger.info("8. Book travel for customer");
         logger.info("9. Add travel to agencys offer");
-        logger.info("10. Exit");
+        logger.info("10. Show filterd travels by a set price");
+        logger.info("11. Get all hotels that our customers spend time in");
+        logger.info("12. Leave review for our agency");
+        logger.info("13. Get travels in Poland") ;
+        logger.info("14. Exit");
         logger.info("Enter choice: ");
     }
 
@@ -128,14 +133,14 @@ public class Utils {
             int id = scanner.nextInt();
             Travel travel = selectTravel(id, agency);
 
-            Integer roomId = travel.getDestination().getHotel().getRandomAvailableRoomId();
-            if (roomId == null) {
+            Integer roomID = travel.getDestination().getHotel().getRandomAvailableRoomId();
+            if (roomID == null) {
                 logger.info("No available rooms to reserve.");
                 return;
             }
-            travel.getDestination().getHotel().reserve(roomId);
-            bookTravelFor(customer, travel);
-        } catch (CustomerDataException | PaymentException e) {
+            travel.getDestination().getHotel().reserve(roomID);
+            bookTravelFor(customer, travel, roomID);
+        } catch (CustomerDataException | PaymentException | ReservationException e) {
             logger.info(e.getMessage());
         }
     }
@@ -148,7 +153,7 @@ public class Utils {
         return travelOptional.get();
     }
 
-    private static void bookTravelFor(Customer customer, Travel travel) throws CustomerDataException, PaymentException {
+    private static void bookTravelFor(Customer customer, Travel travel, int roomID) throws CustomerDataException, PaymentException, ReservationException {
         if (!travel.isSeatAvailable()) {
             throw new CustomerDataException("No seats available on the transport!");
         }
@@ -156,6 +161,7 @@ public class Utils {
         boolean discount = askForDiscount(travel);
 
         if (customer.getBalance() < travel.getPrice()) {
+            travel.getDestination().getHotel().cancelReservation(roomID);
             throw new CustomerDataException("Insufficient balance to book the flight.");
         }
 
