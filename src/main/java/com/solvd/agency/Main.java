@@ -21,14 +21,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.solvd.agency.person.Customer.getCustomerByPhoneNumber;
 import static com.solvd.agency.utils.CreationUtils.*;
@@ -38,7 +39,9 @@ public class Main {
 
     public static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException, IOException {
+
+    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException, ClassNotFoundException {
+        Class<?> agentClass = Class.forName("com.solvd.agency.person.Agent");
         Map<Integer, Insurance> insuranceMap = createInsuranceMap();
         Location location = new Location("testStreet", "testCity", "testCountry");
         Scanner scanner = new Scanner(System.in);
@@ -117,10 +120,28 @@ public class Main {
                         logger.info(travelsInPoland);
                         break;
                     case 14:
+                        logger.info("Agent fields (+ super class PERSON):");
+                        Stream.concat(Arrays.stream(agentClass.getDeclaredFields()), Arrays.stream(agentClass.getSuperclass().getDeclaredFields()))
+                                .forEach(field -> logger.info(field.getName()));
+                        logger.info("Constructors:");
+                        Arrays.stream(agentClass.getDeclaredConstructors())
+                                .forEach(logger::info);
+                        logger.info("Methods:");
+                        Arrays.stream(agentClass.getDeclaredMethods())
+                                .forEach(method -> logger.info(method.getName() + " " + method.getReturnType()));
+
+                        Constructor<?> constructor = agentClass.getConstructor(int.class, String.class, String.class);
+                        Object agentInstance = constructor.newInstance(1, "John", "Doe");
+
+                        Method displayInfoMethod = agentClass.getMethod("displayInfo");
+                        displayInfoMethod.invoke(agentInstance);
+
+                        break;
+                    case 15:
                         exit = true;
                         break;
                     default:
-                        FileUtils.write(file, "User inserted: " + choice + "\n",  StandardCharsets.UTF_8, true);
+                        FileUtils.write(file, "User inserted: " + choice + "\n", StandardCharsets.UTF_8, true);
                         logger.info("Enter a number between 1 and 10.");
                         logger.warn("Invalid input: {}", choice);
                 }
@@ -128,19 +149,29 @@ public class Main {
                 logger.error("Use numbers to move around the console app");
                 scanner.nextLine();
             } catch (IOException e) {
-               logger.error(e.getMessage());
+                logger.error(e.getMessage());
+            } catch (InvocationTargetException | NoSuchMethodException | InstantiationException |
+                     IllegalAccessException e) {
+                throw new RuntimeException(e);
             }
 
 
         }
         scanner.close();
         logger.info("End");
-        String storage = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-        System.out.println(storage);
+        try {
+            String storage = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+            logger.info(storage);
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        }
 
-        String read = readFirstLineFromFile("target/fileExercise.txt");
-        System.out.println(read);
-
+        try {
+            String read = readFirstLineFromFile("target/fileExercise.txt");
+            logger.info(read);
+        } catch (IOException e) {
+            logger.error( e.getMessage());
+        }
 
 
     }

@@ -9,6 +9,7 @@ import com.solvd.agency.service.Review;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Hotel implements Reservable, Reviewable  {
     private static final Logger logger = Logger.getLogger(Hotel.class.getName());
@@ -144,11 +145,9 @@ public class Hotel implements Reservable, Reviewable  {
     }
 
     private Map<Integer, Boolean> initializeRoomStatus(int numberOfRooms) {
-        Map<Integer, Boolean> roomStatusMap = new HashMap<>();
-        for (int i = 1; i <= numberOfRooms; i++) {
-            roomStatusMap.put(i, false);
-        }
-        return roomStatusMap;
+        return IntStream.rangeClosed(1, numberOfRooms)
+                .boxed()
+                .collect(Collectors.toMap(roomNumber -> roomNumber, roomNumber -> false));
     }
 
 

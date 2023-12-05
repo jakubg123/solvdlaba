@@ -12,10 +12,6 @@ public abstract class Person implements Displayable {
 
     private String name;
     private String surname;
-    private Transport transport;
-
-
-
     private double balance;
 
     public Person(String name, String surname) {
@@ -45,14 +41,6 @@ public abstract class Person implements Displayable {
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public Transport getTransport() {
-        return transport;
-    }
-
-    public void setTransport(Transport transport) {
-        this.transport = transport;
     }
 
     @Override

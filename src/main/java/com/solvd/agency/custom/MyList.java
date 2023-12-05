@@ -29,6 +29,7 @@ public class MyList<T> implements List<T> {
         return true;
     }
 
+
     public void display(){
         Node<T> current = head;
         while(current!= null){
@@ -89,10 +90,10 @@ public class MyList<T> implements List<T> {
 
     }
 
-    @Override
     public T remove(int i) {
         return null;
     }
+
 
     @Override
     public int indexOf(Object o) {
@@ -145,6 +146,7 @@ public class MyList<T> implements List<T> {
 
     }
 
+    @Override
     public boolean removeAll(Collection<?> c) {
         boolean removedAll = false;
 
@@ -160,6 +162,8 @@ public class MyList<T> implements List<T> {
         return false;
     }
 
+
+    @Override
     public boolean remove(Object o){
         if(o == null)
             throw new NoSuchElementException("No such an element");
@@ -197,6 +201,7 @@ public class MyList<T> implements List<T> {
         return false;
     }
 
+    @Override
     public boolean contains(Object o) {
         Node<T> current = head;
         while (current != null) {
@@ -226,6 +231,7 @@ public class MyList<T> implements List<T> {
         return null;
     }
 
+    @Override
     public boolean containsAll(Collection<?> c) {
         for (Object element : c) {
             if (!contains(element)) {

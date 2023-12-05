@@ -175,18 +175,13 @@ public class Agency implements Reviewable, Displayable, Cleanable {
 
 
     public Map<String, String> customerPhoneBook() {
-        Map<String, String> phoneMap = new HashMap<>();
-
-        for (Travel travel : this.travels) {
-            for (Customer customer : travel.getTransport().getSeats()) {
-                if (customer != null) {
-                    String fullName = customer.getName() + " " + customer.getSurname();
-                    phoneMap.put(customer.getPhoneNumber(), fullName);
-                }
-            }
-        }
-
-        return phoneMap;
+        return travels.stream()
+                .flatMap(travel -> travel.getTransport().getSeats().stream())
+                .filter(Objects::nonNull)
+                .collect(Collectors.toMap(
+                        Customer::getPhoneNumber,
+                        customer -> customer.getName() + " " + customer.getSurname()
+                ));
     }
 
     @Override

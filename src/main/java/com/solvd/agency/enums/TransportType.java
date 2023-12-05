@@ -2,11 +2,11 @@ package com.solvd.agency.enums;
 
 public enum TransportType {
     BUS("Bus",60),
-    MINIBUS("Mini-bus", 30),
+    MINIBUS("Mini-bus", 65),
     CAR("Car", 4) {
         @Override
         public String getTravelAdvice() {
-            return "Ideal for short journeys.";
+            return "Comfortable transport for a family";
         }
     };
 
@@ -27,11 +27,11 @@ public enum TransportType {
     }
 
     public String getTravelAdvice() {
-        return "Suitable for long-distance travel.";
+        return "Good for short - medium travels";
     }
 
     @Override
     public String toString() {
-        return this.name + "Speed: " + this.averageSpeed + " km/h, Medium: ";
+        return this.name + "Speed: " + this.averageSpeed + " km/h";
     }
 }

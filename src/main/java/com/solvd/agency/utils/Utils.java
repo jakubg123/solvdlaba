@@ -41,9 +41,7 @@ public class Utils {
         if (displayables.isEmpty()) {
             System.out.println("No displayables available.");
         } else {
-            for (Displayable displayable : displayables) {
-                displayable.displayInfo();
-            }
+            displayables.forEach(Displayable::displayInfo);
         }
     }
 
@@ -70,9 +68,7 @@ public class Utils {
         System.out.println();
         if (agency.getTravels().isEmpty())
             System.out.println("No travels available\n");
-        for (Travel travel : agency.getTravels()) {
-            travel.displayInfo();
-        }
+        agency.getTravels().forEach(Travel::displayInfo);
         System.out.println();
 
     }
@@ -80,9 +76,7 @@ public class Utils {
 
     public static void displayMap(Map<Integer, ?> map) {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Integer, ?> entry : map.entrySet()) {
-            sb.append(entry.getKey()).append(" = ").append(entry.getValue().toString()).append("\n");
-        }
+        map.forEach((key, value) -> sb.append(key).append(" = ").append(value.toString()).append("\n"));
         System.out.println(sb.toString());
     }
 
@@ -131,26 +125,33 @@ public class Utils {
             Customer customer = agency.findCustomerByPhoneNumber(phoneNumber);
             logger.info("Pass travel id");
             int id = scanner.nextInt();
-            Travel travel = selectTravel(id, agency);
 
-            Integer roomID = travel.getDestination().getHotel().getRandomAvailableRoomId();
-            if (roomID == null) {
-                logger.info("No available rooms to reserve.");
-                return;
+            Optional<Travel> optionalTravel = selectTravel(id, agency);
+
+            optionalTravel.ifPresent(travel -> {
+                Integer roomID = travel.getDestination().getHotel().getRandomAvailableRoomId();
+                if (roomID == null) {
+                    logger.info("No available rooms to reserve.");
+                    return;
+                }
+                travel.getDestination().getHotel().reserve(roomID);
+                try {
+                    bookTravelFor(customer, travel, roomID);
+                } catch (PaymentException | ReservationException | CustomerDataException e) {
+                    logger.info(e.getMessage());
+                }
+            });
+
+            if (optionalTravel.isEmpty()) {
+                logger.info("Travel is null");
             }
-            travel.getDestination().getHotel().reserve(roomID);
-            bookTravelFor(customer, travel, roomID);
-        } catch (CustomerDataException | PaymentException | ReservationException e) {
+        } catch (CustomerDataException e) {
             logger.info(e.getMessage());
         }
     }
-    private static Travel selectTravel(int id, Agency agency) throws CustomerDataException {
+    private static Optional<Travel> selectTravel(int id, Agency agency) throws CustomerDataException {
 
-        Optional<Travel> travelOptional = agency.getTravelById(id);
-        if (travelOptional.isEmpty()) {
-            throw new CustomerDataException("Invalid travel ID.");
-        }
-        return travelOptional.get();
+        return agency.getTravelById(id);
     }
 
     private static void bookTravelFor(Customer customer, Travel travel, int roomID) throws CustomerDataException, PaymentException, ReservationException {
