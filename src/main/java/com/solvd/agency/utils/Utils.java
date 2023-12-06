@@ -60,7 +60,8 @@ public class Utils {
         logger.info("11. Get all hotels that our customers spend time in");
         logger.info("12. Leave review for our agency");
         logger.info("13. Get travels in Poland") ;
-        logger.info("14. Exit");
+        logger.info("14. Reflection");
+        logger.info("15. Exit");
         logger.info("Enter choice: ");
     }
 
@@ -202,6 +203,8 @@ public class Utils {
 
         return discount;
     }
+
+
 
 
 }

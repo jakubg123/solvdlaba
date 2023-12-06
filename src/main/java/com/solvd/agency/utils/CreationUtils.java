@@ -20,6 +20,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.*;
@@ -46,7 +50,7 @@ public class CreationUtils {
             String surname = StringUtils.strip(scanner.nextLine());
             validateData(surname);
 
-            logger.info("Enter phone number: ");
+            logger.info("Enter phone number (9 digits is a must!): ");
             String phoneNumber = scanner.next();
             validatePhoneNUmber(phoneNumber);
 
@@ -234,7 +238,7 @@ public class CreationUtils {
         Hotel hotel2 = new Hotel("Hotel B", 10);
 
         Location location1 = new Location("testStreet", "testCity", "Poland");
-        Location location2 = new Location("Street", "City", "Czech Republic");
+        Location location2 = new Location("Street", "City", "Czech_Republic");
 
         Destination destination1 = new Destination(location1, hotel1);
         Destination destination2 = new Destination(location2, hotel2);
@@ -270,6 +274,35 @@ public class CreationUtils {
         insuranceMap.put(3, insurance3);
 
         return insuranceMap;
+    }
+
+
+    public static void createFile(String filePath) {
+        try {
+            File file = new File(filePath);
+            file.getParentFile().mkdirs();
+            if (file.createNewFile()) {
+                logger.info("File created: " + file.getAbsolutePath());
+            } else {
+                logger.info("File already exists: " + file.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            logger.info("Could not create file: " + e.getMessage());
+        }
+    }
+    public static boolean isFileEmpty(String filePath) {
+        File file = new File(filePath);
+
+        if (!file.exists() || file.length() == 0) {
+            return true;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            return reader.readLine() == null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return true;
+        }
     }
 
 

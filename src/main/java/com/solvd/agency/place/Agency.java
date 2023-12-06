@@ -261,7 +261,7 @@ public class Agency implements Reviewable, Displayable, Cleanable {
 
     public Consumer<Customer> printCustomer = customer ->
             logger.info("Customer: " + customer.getName() + " " + customer.getSurname() +
-                    ", Phone: " + customer.getPhoneNumber() + ", balance" + customer.getBalance());
+                    ", Phone: " + customer.getPhoneNumber() + ", balance:" + customer.getBalance());
 
     public void displayCustomers() {
         if(this.getCustomers().isEmpty())

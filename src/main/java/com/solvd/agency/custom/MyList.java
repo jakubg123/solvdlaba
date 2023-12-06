@@ -39,7 +39,6 @@ public class MyList<T> implements List<T> {
     }
 
 
-
     @Override
     public int size() {
         if (head == null)
@@ -75,53 +74,7 @@ public class MyList<T> implements List<T> {
         return result;
     }
 
-    @Override
-    public T get(int i) {
-        return null;
-    }
 
-    @Override
-    public T set(int i, T t) {
-        return null;
-    }
-
-    @Override
-    public void add(int i, T t) {
-
-    }
-
-    public T remove(int i) {
-        return null;
-    }
-
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
-
-    @NotNull
-    @Override
-    public ListIterator<T> listIterator() {
-        return null;
-    }
-
-    @NotNull
-    @Override
-    public ListIterator<T> listIterator(int i) {
-        return null;
-    }
-
-    @NotNull
-    @Override
-    public List<T> subList(int i, int i1) {
-        return null;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -240,4 +193,59 @@ public class MyList<T> implements List<T> {
         }
         return true;
     }
+
+
+
+
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @NotNull
+    @Override
+    public ListIterator<T> listIterator() {
+        return null;
+    }
+
+    @NotNull
+    @Override
+    public ListIterator<T> listIterator(int i) {
+        return null;
+    }
+
+    @NotNull
+    @Override
+    public List<T> subList(int i, int i1) {
+        return null;
+    }
+
+    @Override
+    public T get(int i) {
+        return null;
+    }
+
+    @Override
+    public T set(int i, T t) {
+        return null;
+    }
+
+    @Override
+    public void add(int i, T t) {
+
+    }
+
+    public T remove(int i) {
+        return null;
+    }
+
+
+
+
 }

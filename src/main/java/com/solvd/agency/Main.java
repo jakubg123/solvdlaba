@@ -4,6 +4,8 @@ package com.solvd.agency;
 import com.solvd.agency.exceptions.CustomerDataException;
 import com.solvd.agency.exceptions.PaymentException;
 import com.solvd.agency.exceptions.TravelExistsException;
+import com.solvd.agency.multithreading.threads.FileReaderRunnable;
+import com.solvd.agency.multithreading.threads.FileWriterThread;
 import com.solvd.agency.other.Destination;
 import com.solvd.agency.other.Location;
 import com.solvd.agency.person.Agent;
@@ -40,7 +42,7 @@ public class Main {
     public static final Logger logger = LogManager.getLogger(Main.class);
 
 
-    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException, ClassNotFoundException {
+    public static void main(String[] args) throws CustomerDataException, TravelExistsException, PaymentException, ClassNotFoundException, IOException {
         Class<?> agentClass = Class.forName("com.solvd.agency.person.Agent");
         Map<Integer, Insurance> insuranceMap = createInsuranceMap();
         Location location = new Location("testStreet", "testCity", "testCountry");
@@ -131,11 +133,10 @@ public class Main {
                                 .forEach(method -> logger.info(method.getName() + " " + method.getReturnType()));
 
                         Constructor<?> constructor = agentClass.getConstructor(int.class, String.class, String.class);
-                        Object agentInstance = constructor.newInstance(1, "John", "Doe");
+                        Object agentInstance = constructor.newInstance(1, "Jakub", "Gniadek");
 
                         Method displayInfoMethod = agentClass.getMethod("displayInfo");
                         displayInfoMethod.invoke(agentInstance);
-
                         break;
                     case 15:
                         exit = true;
@@ -153,6 +154,8 @@ public class Main {
             } catch (InvocationTargetException | NoSuchMethodException | InstantiationException |
                      IllegalAccessException e) {
                 throw new RuntimeException(e);
+            } catch(CustomerDataException e){
+                logger.info(e.getMessage());
             }
 
 
@@ -174,6 +177,37 @@ public class Main {
         }
 
 
+        String fileMT = "target/fileMT.txt";
+        String fileText = "Litwo, Ojczyzno moja! ty jesteś jak zdrowie;\n" +
+                "Ile cię trzeba cenić, ten tylko się dowie,\n" +
+                "Kto cię stracił.";
+
+        createFile(fileMT);
+        boolean isFileEmpty = isFileEmpty(fileMT);
+
+        Object fileLock = new Object();
+
+        if(isFileEmpty) {
+            synchronized (fileLock) {
+                FileUtils.writeStringToFile(new File(fileMT), fileText, StandardCharsets.UTF_8);
+            }
+        }
+
+        FileReaderRunnable fileReaderRunnable = new FileReaderRunnable(fileMT, fileLock);
+        Thread readThread = new Thread(fileReaderRunnable);
+        readThread.start();
+
+        FileWriterThread fileWriterThread = new FileWriterThread(fileMT, fileText, fileLock);
+        fileWriterThread.start();
+
+        try {
+            readThread.join();
+            fileWriterThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     static String readFirstLineFromFile(String path) throws IOException {
@@ -182,6 +216,9 @@ public class Main {
             return br.readLine();
         }
     }
+
+
+
 
 
 }
