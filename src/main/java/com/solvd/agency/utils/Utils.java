@@ -50,18 +50,19 @@ public class Utils {
         logger.info("1. Display agents");
         logger.info("2. Display customers");
         logger.info("3. Display agency travels");
-        logger.info("4. Register Customer");
-        logger.info("5. Register Agent");
-        logger.info("6. Customer add balance");
-        logger.info("7. Customer get insurance");
-        logger.info("8. Book travel for customer");
-        logger.info("9. Add travel to agencys offer");
-        logger.info("10. Show filterd travels by a set price");
-        logger.info("11. Get all hotels that our customers spend time in");
-        logger.info("12. Leave review for our agency");
-        logger.info("13. Get travels in Poland") ;
-        logger.info("14. Reflection");
-        logger.info("15. Exit");
+        logger.info("4. Describe agency");
+        logger.info("5. Register Customer");
+        logger.info("6. Register Agent");
+        logger.info("7. Customer add balance");
+        logger.info("8. Customer get insurance");
+        logger.info("9. Book travel for customer");
+        logger.info("10. Add travel to agencys offer");
+        logger.info("11. Show filterd travels by a set price");
+        logger.info("12. Get all hotels that our customers spend time in");
+        logger.info("13. Leave review for our agency");
+        logger.info("14. Get travels in Poland") ;
+        logger.info("15. Reflection");
+        logger.info("16. Exit");
         logger.info("Enter choice: ");
     }
 

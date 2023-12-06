@@ -188,6 +188,22 @@ public class Agency implements Reviewable, Displayable, Cleanable {
     public void displayInfo() {
         logger.info(customerPhoneBook().toString());
     }
+    public void displayAgencyReviews() {
+        if (reviews.isEmpty()) {
+            logger.info("There are no reviews.");
+        } else {
+            reviews
+                    .forEach(review -> logger.info(review.getReviewBody() + " " + review.getRating()));
+
+            double averageRating = reviews.stream()
+                    .mapToInt(Review::getRating)
+                    .average()
+                    .orElse(Double.NaN);
+
+            logger.info("Average rating:" + averageRating);
+
+        }
+    }
 
     public void addTravel(Travel travel) {
         this.travels.add(travel);

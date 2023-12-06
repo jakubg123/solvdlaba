@@ -76,44 +76,45 @@ public class Main {
                         displayAllTravels(agency);
                         break;
                     case 4:
+                        agency.displayAgencyReviews();
+                        break;
+                    case 5:
                         createCustomer(agency);
                         break;
-
-                    case 5:
-                        createAgent(agency);
-                        break;
                     case 6:
-                        customer = getCustomerByPhoneNumber(agency);
-                        customer.addBalance();
+                        createAgent(agency);
                         break;
                     case 7:
                         customer = getCustomerByPhoneNumber(agency);
+                        customer.addBalance();
+                        break;
+                    case 8:
+                        customer = getCustomerByPhoneNumber(agency);
                         customer.insuranceReminder(insuranceMap);
                         break;
-
-                    case 8:
+                    case 9:
                         bookTravelForCustomer(agency);
                         agency.displayInfo();
                         break;
-                    case 9:
+                    case 10:
                         createAndAddTravel(agency);
                         break;
-                    case 10:
+                    case 11:
                         Predicate<Travel> travelFilter = travel -> travel.getPrice() < 200;
                         List<Travel> filteredTravels = agency.filterTravels(travelFilter);
                         logger.info(filteredTravels);
                         break;
-                    case 11:
+                    case 12:
                         Function<Travel, String> getHotelNameFromTravel = travel -> travel.getDestination().getHotel().getName();
                         List<String> hotelNames = agency.getTravels().stream()
                                 .map(getHotelNameFromTravel)
                                 .collect(Collectors.toList());
                         logger.info(hotelNames);
                         break;
-                    case 12:
+                    case 13:
 
                         agency.addReviewSupplier();
-                    case 13:
+                    case 14:
                         String country = "Poland";
                         Predicate<Travel> isTravelInCountry = travel -> travel.getDestination().getLocation().getCountry().equalsIgnoreCase(country);
                         List<Travel> travelsInPoland = agency.getTravels().stream()
@@ -121,7 +122,7 @@ public class Main {
                                 .collect(Collectors.toList());
                         logger.info(travelsInPoland);
                         break;
-                    case 14:
+                    case 15:
                         logger.info("Agent fields (+ super class PERSON):");
                         Stream.concat(Arrays.stream(agentClass.getDeclaredFields()), Arrays.stream(agentClass.getSuperclass().getDeclaredFields()))
                                 .forEach(field -> logger.info(field.getName()));
@@ -138,7 +139,7 @@ public class Main {
                         Method displayInfoMethod = agentClass.getMethod("displayInfo");
                         displayInfoMethod.invoke(agentInstance);
                         break;
-                    case 15:
+                    case 16:
                         exit = true;
                         break;
                     default:
